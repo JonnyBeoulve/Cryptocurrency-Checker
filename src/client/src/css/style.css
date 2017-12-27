@@ -1,0 +1,78 @@
+/* ======================================================== 
+// Search container styling
+========================================================*/
+.search-form {
+  max-width: 460px;
+  display: flex;
+  margin: 0 auto 32px;
+}
+
+.search-input {
+  font-size: 1em;
+  width: 100%;
+  background-color: #edeff0;
+  padding: 10px 15px;
+  border: 3px solid #d7dbdf;
+  border-right: none;
+  border-radius: 0.35em 0 0 0.35em;
+  outline: none;
+}
+
+.search-input:hover {
+  background-color: #e7e7e7;
+}
+
+.search-button {
+  outline: none;
+  background-color: #438bbd;
+  border: none;
+  padding: 0px 15px;
+  border-radius: 0 0.35em 0.35em 0;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background: #25628b;;
+}
+
+/* ======================================================== 
+// Top Cryptos styling
+========================================================*/
+.top-cryptos thead {
+  width: 850px;
+}
+
+.top-cryptos {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top-cryptos thead {
+  background-color: rgb(231, 231, 229);
+}
+
+.top-cryptos-item td {
+  height: 50px;
+  width: 200px;
+}
+
+.top-cryptos-rank {
+  width: 50px;
+}
+
+.top-cryptos-name {
+  width: 250px;
+}
+
+.top-cryptos-marketcap {
+  width: 200px;
+}
+
+.top-cryptos-price {
+  width: 200px;
+}
+
+.top-cryptos-change24H {
+  width: 150px;
+}
