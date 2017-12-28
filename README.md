@@ -1,1 +1,1 @@
-This is an in-development React Redux app that will display trending cryptocurrencies and provide pricing information.
+This is an in-development React Redux app that will display trending cryptocurrencies and provide pricing information. Users will be able to register and login to follow and track cryptocurrencies of their choice.
