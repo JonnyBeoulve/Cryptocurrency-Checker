@@ -1,7 +1,8 @@
 import React from 'react';
 
 /*======================================================== 
-//
+// This will enter a row in the table with data for
+// a particular cryptocurrency.
 ========================================================*/
 const Crypto = props => {
 

@@ -17,14 +17,17 @@ class Search extends Component {
   }
   
   /*======================================================== 
-  // Upon clicking the submit button, onSearch will
-  // be summoned, which executes the getCrypto function
-  // located in the parent container. The code in that
-  // file reads: <Search onSearch={this.getPhotos} />
+  // Upon clicking the submit button, the search string
+  // will have any whitespace converted to dashes, and it'll
+  // be converted to lowercase. Following this, the search
+  // string will be sent as an argument to the getCryptos
+  // function in the HomeContainer.
   ========================================================*/
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSearch(this.query.value);
+    let searchString = this.query.value;
+    searchString = searchString.replace(/\s+/g, '-').toLowerCase();
+    this.props.onSearch(searchString);
     e.currentTarget.reset();
   }
   
@@ -47,7 +50,7 @@ class Search extends Component {
             onChange={this.onSearchChange}
             name="search" 
             ref={(input) => this.query = input}
-            placeholder="Search..."
+            placeholder="Search using the full name of a coin"
             className="search-input" />
         <button type="submit" className="search-button">
           <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

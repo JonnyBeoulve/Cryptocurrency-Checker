@@ -1,15 +1,37 @@
 /* ======================================================== 
+// Header styling
+========================================================*/
+.header {
+  display: inline-block;
+}
+
+.header-img {
+  height: 90px;
+  float: left;
+}
+
+.header h1 {
+  cursor: pointer;
+  float: right;
+}
+
+/* ======================================================== 
 // Search container styling
 ========================================================*/
 .search-form {
-  max-width: 460px;
-  display: flex;
-  margin: 0 auto 32px;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  max-width: 420px;
+  margin: 40px;
 }
 
 .search-input {
+  float: left;
+  height: 40px;
+  width: 320px;
   font-size: 1em;
-  width: 100%;
   background-color: #edeff0;
   padding: 10px 15px;
   border: 3px solid #d7dbdf;
@@ -23,8 +45,10 @@
 }
 
 .search-button {
+  float: right;
+  height: 40px;
   outline: none;
-  background-color: #438bbd;
+  background-color: rgba(0, 97, 224, 0.61);
   border: none;
   padding: 0px 15px;
   border-radius: 0 0.35em 0.35em 0;
@@ -36,20 +60,31 @@
 }
 
 /* ======================================================== 
-// Top Cryptos styling
+// Crypto List styling
 ========================================================*/
-.top-cryptos thead {
-  width: 850px;
-}
-
 .top-cryptos {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+.top-cryptos hr {
+  width: 100%;
+  border-color: #ffb951;
+  border-style: dashed;
+}
+
+table td:nth-child(2) {
+  background: rgba(0, 97, 224, 0.048);
+}
+
+table td:nth-child(4) {
+  background: rgba(0, 97, 224, 0.048);
 }
 
 .top-cryptos thead {
-  background-color: rgb(231, 231, 229);
+  background-color: rgba(0, 97, 224, 0.61);
 }
 
 .top-cryptos-item td {

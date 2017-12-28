@@ -1,48 +1,61 @@
 import React, {Component } from 'react';
 import axios from 'axios';
 
-import TopCryptos from './children/TopCryptos';
+import Header from './Header';
+import Cryptos from './children/Cryptos';
 import Search from './children/Search';
 
 class HomeContainer extends Component {
-  /*======================================================== 
+  /*======================================================================
   // This will hold the state of the cryptocurrency that
   // the user has searched for. It will be replaced with
   // Redux in a future update.
-  ========================================================*/
+  ======================================================================*/
   constructor() {
     super();
     this.state = {
-      cryptoList: []
+      cryptoList: [],
+      displayTable: true
     };
   }
-  /*======================================================== 
+  /*====================================================================== 
   // Upon this MainContainer being mounted the getCryptos
   // function will be executed.
-  ========================================================*/
+  ======================================================================*/
   componentDidMount() {
-    this.getCryptos();
+    this.listCryptos();
   }
 
-  /*======================================================== 
-  // This will send a GET request for cryptocurrency data.
-  ========================================================*/
-  getCryptos = (query) => {
-    if (!query) {
-      axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=100`)
+  /*======================================================================
+  // This will send a GET request for a list of the top 100
+  // cryptocurrencies sorted by marketshare size.
+  ======================================================================*/
+  listCryptos = () => {
+    axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=100`)
+    
+    .then((res) => {
+      this.setState( {cryptoList: res.data, displayTable: true} )
+    })
+    .catch(err => {
+      console.log('Error fetching and parsing data.', err)
+    })
+  }
+
+  /*======================================================================
+  // This will search for a cryptocurrency that matches the string
+  // entered by the user.
+  ======================================================================*/
+  searchCrypto = (query) => {
+    axios.get(`https://api.coinmarketcap.com/v1/ticker/${query}/`)
       
-      .then((res) => {
-        this.setState( {cryptoList: res.data} )
-        console.log(this.state.cryptoList);
-      })
-      .catch(err => {
-        console.log('Error fetching and parsing data.', err)
-      })
-    } else {
-      console.log(`Search isn't implemented yet due to CORS errors.`);
-    }
+    .then((res) => {
+      this.setState( {cryptoList: res.data, displayTable: true} )
+    })
+    .catch(err => {
+      this.setState( {displayTable: false} )
+      console.log('Error fetching and parsing data. This is likely caused by the search element not matching a coin name.', err)
+    })
   }
-
 
   /*======================================================================
   // This will render a list of cryptocurrencies.
@@ -50,8 +63,11 @@ class HomeContainer extends Component {
   render() {
     return (
       <div className="crypto-list">
-        <Search onSearch={this.getCryptos} />
-        <TopCryptos cryptosArray={this.state.cryptoList} />
+        <Header listAll={this.listCryptos} />
+        <Search onSearch={this.searchCrypto} />
+        {(this.state.displayTable)
+            ? <Cryptos cryptosArray={this.state.cryptoList} />
+            : <p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p> }
       </div>
     )
   }

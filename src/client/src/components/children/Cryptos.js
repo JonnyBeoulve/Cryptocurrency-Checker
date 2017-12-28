@@ -5,7 +5,7 @@ import Crypto from './Crypto';
 /*======================================================== 
 //
 ========================================================*/
-const TopCryptos = props => {
+const Cryptos = props => {
 
     const allCryptos = props.cryptosArray;
     let cryptos;
@@ -14,6 +14,7 @@ const TopCryptos = props => {
 
         return (
             <div className="top-cryptos">
+                <hr/>
                 <table>
                     <thead>
                         <tr>
@@ -32,4 +33,4 @@ const TopCryptos = props => {
     );
 }
 
-export default TopCryptos;
+export default Cryptos;
