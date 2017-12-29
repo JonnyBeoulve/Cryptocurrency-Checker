@@ -1,6 +1,7 @@
 import React, {Component } from 'react';
 import axios from 'axios';
 
+import Footer from './Footer';
 import Header from './Header';
 import Cryptos from './children/Cryptos';
 import Search from './children/Search';
@@ -67,7 +68,8 @@ class HomeContainer extends Component {
         <Search onSearch={this.searchCrypto} />
         {(this.state.displayTable)
             ? <Cryptos cryptosArray={this.state.cryptoList} />
-            : <p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p> }
+            : <p className="crypto-search-error">No cryptocurrency with that name was found. Please enter the full name of the coin.</p> }
+        <Footer />
       </div>
     )
   }

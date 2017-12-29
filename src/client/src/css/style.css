@@ -6,11 +6,12 @@
 }
 
 .header-img {
-  height: 90px;
+  padding: 10px;
+  height: 60px;
   float: left;
 }
 
-.header h1 {
+.header h2 {
   cursor: pointer;
   float: right;
 }
@@ -62,17 +63,35 @@
 /* ======================================================== 
 // Crypto List styling
 ========================================================*/
-.top-cryptos {
-  width: 1000px;
+.cryptos {
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-.top-cryptos hr {
+.cryptos-header {
   width: 100%;
-  border-color: #ffb951;
-  border-style: dashed;
+  background-color: rgba(0, 97, 224, 0.5);
+  border: 1px solid rgb(0, 97, 224);
+}
+
+.cryptos-header p {
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.cryptos-table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cryptos-item td {
+  height: 50px;
+  width: 200px;
 }
 
 table td:nth-child(2) {
@@ -83,31 +102,20 @@ table td:nth-child(4) {
   background: rgba(0, 97, 224, 0.048);
 }
 
-.top-cryptos thead {
-  background-color: rgba(0, 97, 224, 0.61);
+.crypto-search-error {
+  text-align: center;
 }
 
-.top-cryptos-item td {
-  height: 50px;
-  width: 200px;
+/* ======================================================== 
+// Footer styling
+========================================================*/
+
+.footer {
+  height: 300px;
+  background-color: rgb(177, 197, 211);
 }
 
-.top-cryptos-rank {
-  width: 50px;
-}
-
-.top-cryptos-name {
-  width: 250px;
-}
-
-.top-cryptos-marketcap {
-  width: 200px;
-}
-
-.top-cryptos-price {
-  width: 200px;
-}
-
-.top-cryptos-change24H {
-  width: 150px;
+.footer p {
+  padding: 120px;
+  text-align: center;
 }

@@ -10,7 +10,7 @@ const Header = props => {
   return (
     <div className="header">
         <img src={CryptocurrencyLogo} className="header-img" alt='' />
-        <h1 onClick={props.listAll}>Cryptocurrency Checker</h1>
+        <h2 onClick={props.listAll}>Cryptocurrency Checker</h2>
     </div>
   )
 };
