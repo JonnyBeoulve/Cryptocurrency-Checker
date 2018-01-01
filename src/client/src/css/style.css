@@ -1,4 +1,20 @@
 /* ======================================================== 
+// General styling
+========================================================*/
+p {
+  font-size: 16px;
+}
+
+td {
+  font-size: 16px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 24px;
+}
+
+/* ======================================================== 
 // Header styling
 ========================================================*/
 .header {
@@ -14,6 +30,29 @@
 .header h2 {
   cursor: pointer;
   float: right;
+  color: black;
+}
+
+.signin-register-btn {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  line-height: 40px;
+  max-width: 300px;
+  margin: 40px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 97, 224, 0.61);
+  border: none;
+  padding: 0px 15px;
+  border-radius: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.signin-register-btn:hover {
+  background: #25628b;
 }
 
 /* ======================================================== 
@@ -23,16 +62,16 @@
   position: absolute;
   display: block;
   top: 0;
-  right: 0;
+  right: 80px;
   max-width: 420px;
   margin: 40px;
 }
 
 .search-input {
+  font-family: 'Sarpanch', arial;
   float: left;
   height: 40px;
-  width: 320px;
-  font-size: 1em;
+  width: 180px;
   background-color: #edeff0;
   padding: 10px 15px;
   border: 3px solid #d7dbdf;
@@ -57,7 +96,7 @@
 }
 
 .search-button:hover {
-  background: #25628b;;
+  background: #25628b;
 }
 
 /* ======================================================== 
@@ -72,8 +111,8 @@
 
 .cryptos-header {
   width: 100%;
-  background-color: rgba(0, 97, 224, 0.5);
-  border: 1px solid rgb(0, 97, 224);
+  background-color: rgba(72, 133, 212, 0.678);
+  border: 1px solid rgba(52, 113, 192, 0.678);
 }
 
 .cryptos-header p {
@@ -92,30 +131,130 @@
 .cryptos-item td {
   height: 50px;
   width: 200px;
+  border-bottom: 1px solid #d7dbdf;
 }
 
-table td:nth-child(2) {
-  background: rgba(0, 97, 224, 0.048);
+.text-symbol-styling {
+  color: #4c6875;
 }
 
-table td:nth-child(4) {
-  background: rgba(0, 97, 224, 0.048);
-}
-
-.crypto-search-error {
+.search-error {
   text-align: center;
+  margin: 40px 0 60px 0;
 }
 
 /* ======================================================== 
 // Footer styling
 ========================================================*/
-
 .footer {
   height: 300px;
-  background-color: rgb(177, 197, 211);
+  border-top: 1px solid rgba(54, 110, 184, 0.678);
+  background-color: rgba(72, 133, 212, 0.678);
 }
 
 .footer p {
   padding: 120px;
   text-align: center;
+}
+
+/* ======================================================== 
+// Signin and registration form shared styling
+========================================================*/
+.form-control {
+  display: block;
+  height: 40px;
+  border-radius: 0 0.35em 0.35em 0;
+  font-size: 1em;
+  background-color: #edeff0;
+  padding: 10px 15px;
+  border: 3px solid #d7dbdf;
+  outline: none;
+}
+
+.form-group.has-feedback {
+  display: block;
+}
+
+label.control-label {
+  width: 400px;
+  color: white;
+  font-size: 120%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input.form-control {
+  font-family: 'Sarpanch', arial;
+  width: 300px;
+  margin: 10px auto;
+}
+
+/* ======================================================== 
+// Signin styling
+========================================================*/
+.signin-form {
+  display: block;
+  position: relative;
+  height: 400px;
+}
+
+.signin-submit {
+  font-family: 'Sarpanch', arial;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 120%;
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 97, 224, 0.61);
+  border: none;
+  padding: 0px 15px;
+  border-radius: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.signin-submit:hover {
+  background: #25628b;
+}
+
+.signin-form a {
+  color: rgba(0, 97, 224, 0.61);
+  text-align: center;
+  text-decoration: none;
+}
+
+.signin-form a:hover { 
+  color: #25628b;
+}
+
+/* ======================================================== 
+// Registration styling
+========================================================*/
+.register-form {
+  display: block;
+  position: relative;
+  height: 400px;
+}
+
+.register-submit {
+  font-family: 'Sarpanch', arial;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 120%;
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 97, 224, 0.61);
+  border: none;
+  padding: 0px 15px;
+  border-radius: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.register-submit:hover {
+  background: #25628b;
 }

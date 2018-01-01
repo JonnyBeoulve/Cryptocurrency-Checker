@@ -4,6 +4,8 @@ import { BrowserRouter,
          Switch } from 'react-router-dom';
 
 import HomeContainer from './components/HomeContainer';
+import RegisterContainer from './components/RegisterContainer';
+import SigninContainer from './components/SigninContainer';
 import './css/style.css';
 
 /*======================================================================
@@ -14,6 +16,9 @@ import './css/style.css';
 const App = () => (
   <BrowserRouter>
     <Switch>
+      <Route exact path={'/'} component={HomeContainer} />
+      <Route exact path={'/signin'} component={SigninContainer} />
+      <Route exact path={'/register'} component={RegisterContainer} />
       <Route component={HomeContainer} />
     </Switch>
   </BrowserRouter>

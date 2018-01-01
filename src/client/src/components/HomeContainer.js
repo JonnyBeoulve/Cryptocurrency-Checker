@@ -6,6 +6,8 @@ import Header from './Header';
 import Cryptos from './children/Cryptos';
 import Search from './children/Search';
 
+import SearchErrorImg from '../img/search_error.jpg';
+
 class HomeContainer extends Component {
   /*======================================================================
   // This will hold the state of the cryptocurrency that
@@ -63,12 +65,12 @@ class HomeContainer extends Component {
   ======================================================================*/
   render() {
     return (
-      <div className="crypto-list">
-        <Header listAll={this.listCryptos} />
+      <div className="homepage">
+        <Header />
         <Search onSearch={this.searchCrypto} />
         {(this.state.displayTable)
             ? <Cryptos cryptosArray={this.state.cryptoList} />
-            : <p className="crypto-search-error">No cryptocurrency with that name was found. Please enter the full name of the coin.</p> }
+        : <div className="search-error"><img src={SearchErrorImg} alt='' /><p>Woops!</p><p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p></div> }
         <Footer />
       </div>
     )

@@ -3,7 +3,7 @@ import React from 'react';
 import Crypto from './Crypto';
 
 /*======================================================== 
-//
+// Create a table to display a list of cryptos.
 ========================================================*/
 const Cryptos = props => {
 

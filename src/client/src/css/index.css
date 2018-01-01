@@ -1,10 +1,10 @@
 /*======================================================== 
 // Page styling
 ========================================================*/
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Sarpanch');
 
 body {
-  font-family: 'Open Sans', arial;
+  font-family: 'Sarpanch', arial;
   margin-top: 20px;
   background-color: rgb(250, 252, 255);
 }
