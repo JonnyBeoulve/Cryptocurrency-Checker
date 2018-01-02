@@ -38,7 +38,35 @@ class SigninContainer extends Component {
   ======================================================================*/
   submitSignin = (e) => {
     e.preventDefault();
-    console.log("SUBMIT SIGNIN");
+
+    if (!this.state.username || !this.state.password) {
+      this.setState({ 
+        notice: true,
+        noticeMessage: "Form incomplete."
+      });
+    } else {
+      axios ({
+        method: 'post',
+        url: window.location.href,
+        data: { 
+          username: this.state.username,
+          password: this.state.password,
+        }
+      })
+      .then(response => {
+        this.setState({ 
+          notice: true,
+          noticeMessage: 'You have successfully signed in.'
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+        this.setState({ 
+          notice: true,
+          noticeMessage: 'An error occurred during sign in.'
+        });
+      })
+    }
   } 
 
   /*======================================================================

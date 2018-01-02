@@ -14,8 +14,8 @@ class RegisterContainer extends Component {
     super();
     this.state = {
       username: '',
-      email: '',
       password: '',
+      emailAddress: '',
       notice: false,
       noticeMessage: ''
     };
@@ -39,7 +39,36 @@ class RegisterContainer extends Component {
   ======================================================================*/
   submitRegister = (e) => {
     e.preventDefault();
-    console.log("SUBMIT REGISTER");
+
+    if (!this.state.username || !this.state.password || !this.state.emailAddress ) {
+      this.setState({ 
+        notice: true,
+        noticeMessage: "Form incomplete."
+      });
+    } else {
+      axios ({
+        method: 'post',
+        url: window.location.href,
+        data: { 
+          username: this.state.username,
+          password: this.state.password,
+          emailAddress: this.state.emailAddress
+        }
+      })
+      .then(response => {
+        this.setState({ 
+          notice: true,
+          noticeMessage: 'You have successfully registered.'
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+        this.setState({ 
+          notice: true,
+          noticeMessage: 'An error occurred during registration.'
+        });
+      })
+    }
   } 
 
   /*======================================================================
@@ -56,13 +85,13 @@ class RegisterContainer extends Component {
               >
               <FormGroup>
                 <FormControl
-                  name="name"
+                  name="username"
                   type="text"
                   placeholder="Enter username" 
                   onChange={this.onChange} />
                 <FormControl.Feedback />
                 <FormControl
-                  name="email"
+                  name="emailAddress"
                   type="text"
                   placeholder="Enter email"
                   onChange={this.onChange} />

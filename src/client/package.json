@@ -1,7 +1,7 @@
 {
-  "name": "cryptocurrency-checker",
-  "version": "0.1.0",
-  "description": "This is an in-development React Redux app that will display trending cryptocurrencies and provide pricing information.",
+  "name": "cryptocurrency-checker-react",
+  "version": "0.3.0",
+  "description": "This is the front-end of an in-development React Redux app that will display trending cryptocurrencies and provide pricing information.",
   "dependencies": {
     "axios": "^0.17.1",
     "react": "^16.2.0",

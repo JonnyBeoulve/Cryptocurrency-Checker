@@ -35,6 +35,7 @@ class HomeContainer extends Component {
   ======================================================================*/
   listCryptos = () => {
     axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=100`)
+    //axios.get(`/api/listcryptos`)
     
     .then((res) => {
       this.setState( {cryptoList: res.data, displayTable: true} )
@@ -50,6 +51,7 @@ class HomeContainer extends Component {
   ======================================================================*/
   searchCrypto = (query) => {
     axios.get(`https://api.coinmarketcap.com/v1/ticker/${query}/`)
+    //axios.get(`/api/searchcrypto`)
       
     .then((res) => {
       this.setState( {cryptoList: res.data, displayTable: true} )

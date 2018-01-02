@@ -195,7 +195,7 @@ input.form-control {
 .signin-form {
   display: block;
   position: relative;
-  height: 400px;
+  height: 250px;
 }
 
 .signin-submit {
@@ -229,13 +229,18 @@ input.form-control {
   color: #25628b;
 }
 
+.signin p {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 /* ======================================================== 
 // Registration styling
 ========================================================*/
 .register-form {
   display: block;
   position: relative;
-  height: 400px;
+  height: 300px;
 }
 
 .register-submit {
@@ -257,4 +262,9 @@ input.form-control {
 
 .register-submit:hover {
   background: #25628b;
+}
+
+.register p {
+  text-align: center;
+  margin-bottom: 40px;
 }
