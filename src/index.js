@@ -18,7 +18,7 @@ const {User} = require('./models/user');
 // If a database error occurs, throw object to console.
 ============================================================================*/
 mongoose.Promise = global.Promise;
-mongoose.connect((process.env.MONGOLAB_URI || 'mongodb://localhost:27017/crypto'), {useMongoClient: true});
+mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost:27017/crypto'), {useMongoClient: true});
 const port = (process.env.PORT || 5000);
 var db = mongoose.connection;
 
