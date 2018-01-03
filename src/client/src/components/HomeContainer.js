@@ -72,7 +72,7 @@ class HomeContainer extends Component {
         <Search onSearch={this.searchCrypto} />
         {(this.state.displayTable)
             ? <Cryptos cryptosArray={this.state.cryptoList} />
-        : <div className="search-error"><img src={SearchErrorImg} alt='' /><p>Woops!</p><p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p></div> }
+            : <div className="search-error"><img src={SearchErrorImg} alt='' /><p>Woops!</p><p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p></div> }
         <Footer />
       </div>
     )

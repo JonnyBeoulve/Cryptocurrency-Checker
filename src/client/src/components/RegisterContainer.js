@@ -5,6 +5,8 @@ import axios from 'axios';
 import Footer from './Footer';
 import Header from './Header';
 
+import RegisterImg from '../img/signin_img.png';
+
 class RegisterContainer extends Component {
 
   /*======================================================================
@@ -34,8 +36,8 @@ class RegisterContainer extends Component {
   // This will handle submission of the registration form. If any fields
   // are empty, show error within main div. Otherwise, post data
   // to the database (which has validation of its own) and make sure
-  // no errors are shown anymore. If an error is caught during the
-  // transaction, post to console.
+  // no errors are shown anymore. The result of the POST will be
+  // displayed for the user below the form.
   ======================================================================*/
   submitRegister = (e) => {
     e.preventDefault();
@@ -78,6 +80,7 @@ class RegisterContainer extends Component {
     return (
       <div className="register">
         <Header />
+        <img src={RegisterImg} className="login-img" alt='' />
         <h3>Register</h3>
         <div className="register-form">
           <form
@@ -106,9 +109,9 @@ class RegisterContainer extends Component {
               <Button className="register-submit" bsStyle="danger" bsSize="large" type="submit">Submit</Button>
             </form>
           </div>
-          {(!this.state.notice)
-            ? <p></p>
-          : <p>An error occurred during registration!</p> }
+          {(this.state.notice)
+            ? <p>{this.state.noticeMessage}</p>
+            : <p></p> }
         <Footer />
       </div>
     )

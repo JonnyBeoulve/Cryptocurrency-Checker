@@ -31,7 +31,7 @@ router.post('/register', function(req, res, next) {
 
 /*============================================================================
 // Upon entering signin information, a user's credentials will be verified
-// before the client state is set to login. Several features will be
+// before the client state is set to logged in. Several features will be
 // available using login.
 ============================================================================*/
 router.post('/signin', function(req, res, next) {

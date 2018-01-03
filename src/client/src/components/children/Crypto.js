@@ -8,7 +8,7 @@ const Crypto = props => {
 
   return (
     <tr className="cryptos-item">
-        <td>{props.rank}</td>
+        <td><span className="text-symbol-styling">{props.rank}</span></td>
         <td>{props.name} <span className="text-symbol-styling">({props.symbol})</span></td>
         <td><span className="text-symbol-styling">$</span> {props.marketCap}</td>
         <td><span className="text-symbol-styling">$</span> {props.priceUSD}</td>

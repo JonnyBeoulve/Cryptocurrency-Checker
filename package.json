@@ -1,26 +1,17 @@
 {
   "name": "cryptocurrency-checker",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "This is an in-development React Redux app that will display trending cryptocurrencies and provide pricing information.",
   "author": "Jonathan Leack",
   "license": "ISC",
+  "engines": {
+    "node": "6.11.3",
+    "npm": "3.10.10"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JonnyBeoulve/Cryptocurrency-Checker.git"
-  },
-  "keywords": [
-    "cryptocurrency",
-    "crypto"
-  ],
-  "bugs": {
-    "url": "https://github.com/JonnyBeoulve/Cryptocurrency-Checker/issues"
-  },
-  "homepage": "https://github.com/JonnyBeoulve/Cryptocurrency-Checker#readme",
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",

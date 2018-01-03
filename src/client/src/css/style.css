@@ -12,6 +12,7 @@ td {
 h3 {
   text-align: center;
   font-size: 24px;
+  -webkit-margin-after: 0px;
 }
 
 /* ======================================================== 
@@ -30,7 +31,8 @@ h3 {
 .header h2 {
   cursor: pointer;
   float: right;
-  color: black;
+  font-weight: 300;
+  color: #4c6875;
 }
 
 .signin-register-btn {
@@ -110,9 +112,16 @@ h3 {
 }
 
 .cryptos-header {
+  height: 40px;
   width: 100%;
-  background-color: rgba(72, 133, 212, 0.678);
-  border: 1px solid rgba(52, 113, 192, 0.678);
+  line-height: 10px;
+  background-color: #4c687541;
+  border: 1px solid #4c6875a4;
+}
+
+.cryptos-header p {
+  font-weight: 300px;
+  color: #4c6875;
 }
 
 .cryptos-header p {
@@ -187,6 +196,12 @@ input.form-control {
   font-family: 'Sarpanch', arial;
   width: 300px;
   margin: 10px auto;
+}
+
+.login-img {
+  display: block;
+  height: 200px;
+  margin: 0 auto;
 }
 
 /* ======================================================== 

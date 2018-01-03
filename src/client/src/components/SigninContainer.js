@@ -5,6 +5,8 @@ import axios from 'axios';
 import Footer from './Footer';
 import Header from './Header';
 
+import SigninImg from '../img/signin_img.png';
+
 class SigninContainer extends Component {
 
   /*======================================================================
@@ -76,6 +78,7 @@ class SigninContainer extends Component {
     return (
       <div className="signin">
         <Header />
+        <img src={SigninImg} className="login-img" alt='' />
         <h3>Sign In</h3>
         <div className="signin-form">
           <form
@@ -83,7 +86,7 @@ class SigninContainer extends Component {
               >
               <FormGroup>
                 <FormControl
-                  name="name"
+                  name="username"
                   type="text"
                   placeholder="Enter username" 
                   onChange={this.onChange} />
@@ -101,7 +104,7 @@ class SigninContainer extends Component {
           </div>
           {(!this.state.notice)
             ? <p></p>
-            : <p>An error occurred during signin!</p> }
+            : <p>{this.state.noticeMessage}</p> }
         <Footer />
       </div>
     )
