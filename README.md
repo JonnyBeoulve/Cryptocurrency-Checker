@@ -7,4 +7,4 @@ This is an in-development React Redux app that will display trending cryptocurre
 3. You can interface with the program by visiting 'http://localhost:3000'.
 
 ## Note
-This is an in-development app that will soon be hosted on Heroku. The front-end and back-end have been partially merged, although the GET requests still need to be pushed to the back-end. Also, Redux state and the account page is currently a work in progress.
+This is an in-development app that will soon be hosted on Heroku. The front-end and back-end are working, although several features are yet to be implemented, including the complete account page, cryptocurrency following, and login authentication.
