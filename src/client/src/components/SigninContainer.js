@@ -1,6 +1,7 @@
-import React, {Component } from 'react';
-import {Button, FormGroup, FormControl} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -18,7 +19,7 @@ class SigninContainer extends Component {
       username: '',
       password: '',
       notice: false,
-      noticeMessage: ''
+      noticeMessage: '',
     };
   }
 
@@ -31,7 +32,7 @@ class SigninContainer extends Component {
     this.setState(state);
   }
 
-   /*======================================================================
+  /*======================================================================
   // This will handle submission of the signin form. If any fields
   // are empty, show error within main div. Otherwise, post data
   // to the database (which has validation of its own) and make sure
@@ -47,7 +48,13 @@ class SigninContainer extends Component {
         noticeMessage: "Form incomplete."
       });
     } else {
-      axios ({
+      console.log("Working Submit button");
+      this.props.onSignIn();
+      this.setState ({
+        notice: true,
+        noticeMessage: 'You have successfully signed in.',
+      });
+      /*axios ({
         method: 'post',
         url: window.location.href,
         data: { 
@@ -66,10 +73,9 @@ class SigninContainer extends Component {
         this.setState({ 
           notice: true,
           noticeMessage: 'An error occurred during sign in.'
-        });
-      })
-    }
-  } 
+        });*/
+      };
+    } 
 
   /*======================================================================
   // This will render the login and registration forms.
@@ -111,4 +117,10 @@ class SigninContainer extends Component {
   }
 }
 
-export default SigninContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+      onSignIn: () => dispatch({type: 'SIGNIN'})
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SigninContainer);

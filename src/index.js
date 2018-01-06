@@ -27,7 +27,7 @@ db.on('error', function(err) {
 })
 
 /*============================================================================
-// HTTP methodology to import the Api Call and Contact routes.
+// HTTP methodology to import the Account and ApiCall routes.
 ============================================================================*/
 app.use('/', accountRoutes);
 app.use('/', apicallRoutes);

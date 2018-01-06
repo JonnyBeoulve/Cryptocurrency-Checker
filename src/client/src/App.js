@@ -6,6 +6,7 @@ import { BrowserRouter,
 import HomeContainer from './components/HomeContainer';
 import RegisterContainer from './components/RegisterContainer';
 import SigninContainer from './components/SigninContainer';
+import AccountContainer from './components/AccountContainer';
 import './css/style.css';
 
 /*======================================================================
@@ -19,6 +20,7 @@ const App = () => (
       <Route exact path={'/'} component={HomeContainer} />
       <Route exact path={'/signin'} component={SigninContainer} />
       <Route exact path={'/register'} component={RegisterContainer} />
+      <Route exact path={'/account'} component={AccountContainer} />
       <Route component={HomeContainer} />
     </Switch>
   </BrowserRouter>

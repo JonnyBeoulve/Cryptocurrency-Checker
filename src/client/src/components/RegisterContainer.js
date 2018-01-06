@@ -1,5 +1,5 @@
-import React, {Component } from 'react';
-import {Button, FormGroup, FormControl} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 
 import Footer from './Footer';

@@ -1,34 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 import Footer from './Footer';
 import Header from './Header';
 import Cryptos from './children/Cryptos';
 import Search from './children/Search';
 
-import SearchErrorImg from '../img/search_error.jpg';
-
-class HomeContainer extends Component {
-  /*======================================================================
-  // This will hold the state of the cryptocurrency that
-  // the user has searched for. It will be replaced with
-  // Redux in a future update.
-  ======================================================================*/
-  constructor() {
-    super();
-    this.state = {
-      cryptoList: [],
-      displayTable: true
-    };
-  }
-  /*====================================================================== 
-  // Upon this MainContainer being mounted the getCryptos
-  // function will be executed.
-  ======================================================================*/
-  componentDidMount() {
-    this.listCryptos();
-  }
-
+class AccountContainer extends Component {
   /*======================================================================
   // This will send a GET request for a list of the top 100
   // cryptocurrencies sorted by marketshare size.
@@ -63,20 +43,35 @@ class HomeContainer extends Component {
   }
 
   /*======================================================================
-  // This will render a list of cryptocurrencies.
+  // This will handle submission of the signout button.
+  ======================================================================*/
+  submitSignout = (e) => {
+    e.preventDefault();
+    this.props.onSignOut();
+    console.log("SIGNED OUT");
+  };
+
+  /*======================================================================
+  // This will display the user's username, a signout button, along
+  // with the current values of any cryptocurrencies they are following.
   ======================================================================*/
   render() {
     return (
-      <div className="homepage">
+      <div className="account">
         <Header />
-        <Search onSearch={this.searchCrypto} />
-        {(this.state.displayTable)
-            ? <Cryptos cryptosArray={this.state.cryptoList} />
-            : <div className="search-error"><img src={SearchErrorImg} alt='' /><p>Woops!</p><p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p></div> }
+          <h2>Hello [ACCOUNT NAME]</h2>
+          <Button className="signout" bsStyle="danger" bsSize="large" onClick={this.submitSignout} type="submit">Sign out</Button>
+          <p>[List cryptocurrencies here]</p>
         <Footer />
       </div>
     )
   }
 }
 
-export default HomeContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+      onSignOut: () => dispatch({type: 'SIGNOUT'})
+  };
+}
+
+export default connect(null, mapDispatchToProps)(AccountContainer);
