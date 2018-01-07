@@ -1,10 +1,23 @@
 /*======================================================== 
-// Page styling
+// General page styling
 ========================================================*/
 @import url('https://fonts.googleapis.com/css?family=Sarpanch');
 
 body {
   font-family: 'Sarpanch', arial;
   margin-top: 20px;
-  background-color: rgb(250, 252, 255);
+  background-color: rgb(36, 36, 36);
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #79adc4;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #79adc4;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #79adc4;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #79adc4;
 }

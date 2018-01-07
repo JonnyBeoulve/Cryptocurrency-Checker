@@ -2,6 +2,7 @@
 // General styling
 ========================================================*/
 p {
+  color: #79adc4;
   font-size: 16px;
 }
 
@@ -13,6 +14,7 @@ h3 {
   text-align: center;
   font-size: 24px;
   -webkit-margin-after: 0px;
+  color: #eeff00;
 }
 
 /* ======================================================== 
@@ -32,7 +34,7 @@ h3 {
   cursor: pointer;
   float: right;
   font-weight: 300;
-  color: #4c6875;
+  color: #eeff00;
 }
 
 .signin-register-btn {
@@ -45,8 +47,8 @@ h3 {
   margin: 40px;
   font-size: 14px;
   text-decoration: none;
-  color: white;
-  background-color: rgba(0, 97, 224, 0.61);
+  color: #79adc4;
+  background-color: rgb(0, 101, 119);
   border: none;
   padding: 0px 15px;
   border-radius: 8px 8px 8px 8px;
@@ -54,7 +56,7 @@ h3 {
 }
 
 .signin-register-btn:hover {
-  background: #25628b;
+  color: black;
 }
 
 /* ======================================================== 
@@ -70,28 +72,29 @@ h3 {
 }
 
 .search-input {
+  color: #79adc4;
   font-family: 'Sarpanch', arial;
   float: left;
   height: 40px;
   width: 180px;
-  background-color: #edeff0;
+  background-color: rgb(36, 36, 36);
   padding: 10px 15px;
-  border: 3px solid #d7dbdf;
+  border: 1px solid rgb(0, 101, 119);
   border-right: none;
   border-radius: 0.35em 0 0 0.35em;
   outline: none;
 }
 
 .search-input:hover {
-  background-color: #e7e7e7;
+  background-color: black;
 }
 
 .search-button {
   float: right;
   height: 40px;
   outline: none;
-  background-color: rgba(0, 97, 224, 0.61);
-  border: none;
+  background-color: rgb(0, 101, 119);
+  border: 1px solid rgb(0, 101, 119);
   padding: 0px 15px;
   margin: 0px 5px 0px 0px;
   border-radius: 0 0.35em 0.35em 0;
@@ -99,7 +102,7 @@ h3 {
 }
 
 .search-button:hover {
-  background: #25628b;
+  color: black;
 }
 
 /* ======================================================== 
@@ -116,13 +119,13 @@ h3 {
   height: 40px;
   width: 100%;
   line-height: 10px;
-  background-color: #4c687541;
-  border: 1px solid #4c6875a4;
+  background-color: rgb(15, 15, 15);
+  border: 2px ridge rgb(0, 101, 119);
 }
 
 .cryptos-header p {
   font-weight: 300px;
-  color: #4c6875;
+  color: #eeff00;
 }
 
 .cryptos-header p {
@@ -141,11 +144,12 @@ h3 {
 .cryptos-item td {
   height: 50px;
   width: 200px;
-  border-bottom: 1px solid #d7dbdf;
+  color: white;
+  border-bottom: 1px solid rgb(0, 101, 119);
 }
 
 .text-symbol-styling {
-  color: #4c6875;
+  color: #79adc4;
 }
 
 .search-error {
@@ -158,28 +162,29 @@ h3 {
 ========================================================*/
 .footer {
   height: 300px;
-  border-top: 1px solid rgba(54, 110, 184, 0.678);
-  background-color: rgba(72, 133, 212, 0.678);
+  border-top: 1px solid rgb(0, 101, 119);
+  background-color: rgb(15, 15, 15);
 }
 
 .footer p {
   padding: 120px;
   text-align: center;
+  color: #79adc4;
 }
 
 /* ======================================================== 
-// Signin and registration modal shared styling
+// Signin and registration modal styling
 ========================================================*/
 .modal-close {
   text-align: right;
   margin: 5px 5px 0px 0px;
-  color: rgb(87, 87, 87);
+  color: #79adc4;
   font-weight: bold;
   cursor: pointer;
 }
 
 .modal-close:hover {
-  color: black;
+  color: rgb(0, 101, 119);
 }
 
 .form-control {
@@ -187,10 +192,16 @@ h3 {
   height: 40px;
   border-radius: 0 0.35em 0.35em 0;
   font-size: 1em;
-  background-color: #edeff0;
+  font-family: 'Sarpanch', arial;
+  background-color: rgb(36, 36, 36);
+  color: #79adc4;
   padding: 10px 15px;
-  border: 3px solid #d7dbdf;
+  border: 2px solid rgb(0, 101, 119);
   outline: none;
+}
+
+.form-control:hover {
+  background-color: black;
 }
 
 .form-group.has-feedback {
@@ -221,6 +232,15 @@ input.form-control {
   cursor: pointer;
 }
 
+.create-account p {
+  color: #79adc4;
+}
+
+.create-account p:hover {
+  color: rgb(0, 101, 119);
+}
+
+
 /* ======================================================== 
 // Signin styling
 ========================================================*/
@@ -234,9 +254,9 @@ input.form-control {
   right: 0;
   top: 100px;
   margin-top: 80px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(15, 15, 15);
   border-radius: 0 0.35em 0.35em 0;
-  border: 2px solid #4c6875a4;
+  border: 2px solid rgb(0, 101, 119);
   border-style: ridge;
 }
 
@@ -255,8 +275,8 @@ input.form-control {
   font-size: 120%;
   line-height: 40px;
   text-decoration: none;
-  color: white;
-  background-color: rgba(0, 97, 224, 0.61);
+  color: #79adc4;
+  background-color: rgb(0, 101, 119);
   border: none;
   padding: 0px 15px;
   border-radius: 8px 8px 8px 8px;
@@ -264,22 +284,17 @@ input.form-control {
 }
 
 .signin-submit:hover {
-  background: #25628b;
+  color: black;
 }
 
 .signin-form a {
-  color: rgba(0, 97, 224, 0.61);
+  color: rgb(0, 101, 119);
   text-align: center;
   text-decoration: none;
 }
 
 .signin-form a:hover { 
-  color: #25628b;
-}
-
-.signin p {
-  text-align: center;
-  margin-bottom: 40px;
+  color: black;
 }
 
 /* ======================================================== 
@@ -295,9 +310,9 @@ input.form-control {
   right: 0;
   top: 100px;
   margin-top: 80px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(15, 15, 15);
   border-radius: 0 0.35em 0.35em 0;
-  border: 2px solid #4c6875a4;
+  border: 2px solid rgb(0, 101, 119);
   border-style: ridge;
 }
 
@@ -316,8 +331,8 @@ input.form-control {
   font-size: 120%;
   line-height: 40px;
   text-decoration: none;
-  color: white;
-  background-color: rgba(0, 97, 224, 0.61);
+  color: #79adc4;
+  background-color: rgb(0, 101, 119);
   border: none;
   padding: 0px 15px;
   border-radius: 8px 8px 8px 8px;
@@ -325,7 +340,7 @@ input.form-control {
 }
 
 .register-submit:hover {
-  background: #25628b;
+  color: black;
 }
 
 .register p {
@@ -361,5 +376,5 @@ input.form-control {
 }
 
 .signout:hover { 
-  background-color: #25628b;
+  color: black;
 }
