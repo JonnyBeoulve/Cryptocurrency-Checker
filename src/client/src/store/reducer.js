@@ -2,7 +2,9 @@
 // By default the user will be signed out.
 ======================================================================*/
 const initialState = {
-    signedIn: false
+    signedIn: false,
+    displaySigninModal: false,
+    displayRegisterModal: false
 }
 
 /*======================================================================
@@ -11,7 +13,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch ( action.type ) {
         case 'SIGNIN':
-            console.log("BEFORE: " + state.signedIn);
             return {
                 ...state,
                 signedIn: true
@@ -21,6 +22,27 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 signedIn: false
             }
+        case 'DISPLAY_SIGNIN_MODAL':
+        console.log("SHOWING SIGNIN");
+            return {
+                ...state,
+                displaySigninModal: true
+        }
+        case 'HIDE_SIGNIN_MODAL':
+            return {
+                ...state,
+                displaySigninModal: false
+        }
+        case 'DISPLAY_REGISTER_MODAL':
+            return {
+                ...state,
+                displayRegisterModal: true
+        }
+        case 'HIDE_REGISTER_MODAL':
+            return {
+                ...state,
+                displayRegisterModal: false
+        }
     };
     return state;
 }

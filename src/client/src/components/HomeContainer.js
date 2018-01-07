@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/lib/Button';
+import { connect } from 'react-redux';
 
 import Footer from './Footer';
 import Header from './Header';
 import Cryptos from './children/Cryptos';
 import Search from './children/Search';
+import RegisterModal from './RegisterModal';
+import SigninModal from './SigninModal';
 
 import SearchErrorImg from '../img/search_error.jpg';
 
 class HomeContainer extends Component {
   /*======================================================================
-  // This will hold the state of the cryptocurrency that
-  // the user has searched for. It will be replaced with
-  // Redux in a future update.
+  // This will hold the state of the top 100 cryptocurrencies by default
+  // along with what modals should be visible. It is updated by the 
+  // Search functionality the find the data for a specific 
+  // cryptocurrency.
   ======================================================================*/
   constructor() {
     super();
     this.state = {
       cryptoList: [],
-      displayTable: true
+      displaySigninModal: false,
+      displayCryptoTable: true
     };
   }
+
   /*====================================================================== 
   // Upon this MainContainer being mounted the getCryptos
   // function will be executed.
@@ -38,7 +45,7 @@ class HomeContainer extends Component {
     //axios.get(`/api/listcryptos`)
     
     .then((res) => {
-      this.setState( {cryptoList: res.data, displayTable: true} )
+      this.setState( {cryptoList: res.data, displayCryptoTable: true} )
     })
     .catch(err => {
       console.log('Error fetching and parsing data.', err)
@@ -54,29 +61,59 @@ class HomeContainer extends Component {
     //axios.get(`/api/searchcrypto`)
       
     .then((res) => {
-      this.setState( {cryptoList: res.data, displayTable: true} )
+      this.setState( {cryptoList: res.data, displayCryptoTable: true} )
     })
     .catch(err => {
-      this.setState( {displayTable: false} )
+      this.setState( {displayCryptoTable: false} )
       console.log('Error fetching and parsing data. This is likely caused by the search element not matching a coin name.', err)
     })
   }
+  /*======================================================== 
+  // Upon clicking Sign-in this will change the state to
+  // display the login modal window.
+  ========================================================*/
+  handleShowModal = (e) => {
+    this.props.onDisplaySignin();
+  }
 
   /*======================================================================
-  // This will render a list of cryptocurrencies.
+  // This will render the page. All core functionality can be found below.
   ======================================================================*/
   render() {
     return (
       <div className="homepage">
-        <Header />
+        <Header signinModalShow={this.state.displaySigninModal} />
         <Search onSearch={this.searchCrypto} />
-        {(this.state.displayTable)
+        {(!this.state.displaySigninModal)
+            ? <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleShowModal}>Sign in</Button>
+            : <Button bsStyle="primary" className="signin-register-btn">Sign out</Button> }
+        {(this.state.displayCryptoTable)
             ? <Cryptos cryptosArray={this.state.cryptoList} />
             : <div className="search-error"><img src={SearchErrorImg} alt='' /><p>Woops!</p><p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p></div> }
+        {(this.props.signinModalStatus)
+            ? <SigninModal />
+            : <p></p> }
+        {(this.props.registerModalStatus)
+            ? <RegisterModal />
+            : <p></p> }
         <Footer />
       </div>
     )
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = state => {
+  return {
+    signedInStatus: state.signedInStatus.signedIn,
+    signinModalStatus: state.signinModalStatus.displaySigninModal,
+    registerModalStatus: state.registerModalStatus.displayRegisterModal
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onDisplaySignin: () => dispatch({type: 'DISPLAY_SIGNIN_MODAL'})
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

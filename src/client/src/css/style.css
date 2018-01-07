@@ -93,6 +93,7 @@ h3 {
   background-color: rgba(0, 97, 224, 0.61);
   border: none;
   padding: 0px 15px;
+  margin: 0px 5px 0px 0px;
   border-radius: 0 0.35em 0.35em 0;
   cursor: pointer;
 }
@@ -167,8 +168,20 @@ h3 {
 }
 
 /* ======================================================== 
-// Signin and registration form shared styling
+// Signin and registration modal shared styling
 ========================================================*/
+.modal-close {
+  text-align: right;
+  margin: 5px 5px 0px 0px;
+  color: rgb(87, 87, 87);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: black;
+}
+
 .form-control {
   display: block;
   height: 40px;
@@ -204,9 +217,29 @@ input.form-control {
   margin: 0 auto;
 }
 
+.create-account {
+  cursor: pointer;
+}
+
 /* ======================================================== 
 // Signin styling
 ========================================================*/
+.signin-modal {
+  width: 400px;
+  height: 620px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 100px;
+  margin-top: 80px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0 0.35em 0.35em 0;
+  border: 2px solid #4c6875a4;
+  border-style: ridge;
+}
+
 .signin-form {
   display: block;
   position: relative;
@@ -252,6 +285,22 @@ input.form-control {
 /* ======================================================== 
 // Registration styling
 ========================================================*/
+.register-modal {
+  width: 400px;
+  height: 660px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 100px;
+  margin-top: 80px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0 0.35em 0.35em 0;
+  border: 2px solid #4c6875a4;
+  border-style: ridge;
+}
+
 .register-form {
   display: block;
   position: relative;
@@ -299,4 +348,18 @@ input.form-control {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Sarpanch', arial;
+  font-size: 120%;
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 97, 224, 0.61);
+  border: none;
+  padding: 0px 15px;
+  border-radius: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.signout:hover { 
+  background-color: #25628b;
 }

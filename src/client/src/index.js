@@ -4,12 +4,14 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import loginReducer from './store/reducer';
+import reducer from './store/reducer';
 import registerServiceWorker from './registerServiceWorker';
 import './css/index.css';
 
 const rootReducer = combineReducers({
-    signedInStatus: loginReducer
+    signedInStatus: reducer,
+    signinModalStatus: reducer,
+    registerModalStatus: reducer
 });
 
 const store = createStore(rootReducer);

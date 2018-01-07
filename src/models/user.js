@@ -27,6 +27,12 @@ var UserSchema = new mongoose.Schema ({
 			isAsync: false,
 			validator: validator.isEmail, 
 				message: 'Not a valid email.'
+		},
+	followedCryptos: {
+		type: Array,
+		required: false,
+		unique: false,
+		maxlength: 10
 		}
 	}
 })

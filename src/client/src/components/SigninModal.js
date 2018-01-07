@@ -3,15 +3,12 @@ import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import Footer from './Footer';
-import Header from './Header';
-
 import SigninImg from '../img/signin_img.png';
 
-class SigninContainer extends Component {
+class SigninModal extends Component {
 
   /*======================================================================
-  // This will track the state of the signin form.
+  // This will track the state of the signin and registration forms.
   ======================================================================*/
   constructor() {
     super();
@@ -78,12 +75,29 @@ class SigninContainer extends Component {
     } 
 
   /*======================================================================
-  // This will render the login and registration forms.
+  // Upon clicking the X on the top right of the modal, the modal
+  // will close.
+  ======================================================================*/
+  handleCloseSigninModal = (e) => {
+    this.props.onHideSignin();
+  }
+
+  /*======================================================================
+  // If the user clicks the link to Create An Account, the signin modal
+  // will close and the register modal will open.
+  ======================================================================*/
+  handleShowRegisterModal = (e) => {
+    this.props.onHideSignin();
+    this.props.onDisplayRegister();
+  }
+
+  /*======================================================================
+  // This will render the login and registration modals.
   ======================================================================*/
   render() {
     return (
-      <div className="signin">
-        <Header />
+      <div className="signin-modal">
+        <p className="modal-close" onClick={this.handleCloseSigninModal}>X</p>
         <img src={SigninImg} className="login-img" alt='' />
         <h3>Sign In</h3>
         <div className="signin-form">
@@ -106,12 +120,11 @@ class SigninContainer extends Component {
               </FormGroup>
               <Button className="signin-submit" bsStyle="danger" bsSize="large" type="submit">Submit</Button>
             </form>
-            <a href="/register"><p>Create an account</p></a>
+            <a className="create-account" onClick={this.handleShowRegisterModal}><p>Create an account</p></a>
           </div>
           {(!this.state.notice)
             ? <p></p>
             : <p>{this.state.noticeMessage}</p> }
-        <Footer />
       </div>
     )
   }
@@ -119,8 +132,9 @@ class SigninContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-      onSignIn: () => dispatch({type: 'SIGNIN'})
+    onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
+    onDisplayRegister: () => dispatch({type: 'DISPLAY_REGISTER_MODAL'})
   };
 }
 
-export default connect(null, mapDispatchToProps)(SigninContainer);
+export default connect(null, mapDispatchToProps)(SigninModal);

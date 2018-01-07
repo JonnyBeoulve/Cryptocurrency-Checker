@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
-
-import Footer from './Footer';
-import Header from './Header';
+import { connect } from 'react-redux';
 
 import RegisterImg from '../img/signin_img.png';
 
@@ -74,12 +72,20 @@ class RegisterContainer extends Component {
   } 
 
   /*======================================================================
+  // Upon clicking the X on the top right of the modal, the modal
+  // will close.
+  ======================================================================*/
+  handleCloseRegisterModal = (e) => {
+    this.props.onHideRegister();
+  }
+
+  /*======================================================================
   // This will render the login and registration forms.
   ======================================================================*/
   render() {
     return (
-      <div className="register">
-        <Header />
+      <div className="register-modal">
+        <p className="modal-close" onClick={this.handleCloseRegisterModal}>X</p>
         <img src={RegisterImg} className="login-img" alt='' />
         <h3>Register</h3>
         <div className="register-form">
@@ -112,10 +118,15 @@ class RegisterContainer extends Component {
           {(this.state.notice)
             ? <p>{this.state.noticeMessage}</p>
             : <p></p> }
-        <Footer />
       </div>
     )
   }
 }
 
-export default RegisterContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(RegisterContainer);
