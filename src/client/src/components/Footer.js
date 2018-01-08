@@ -7,7 +7,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <p>Made by Jonathan Leack. Work in progress.</p>
+        <p>Made by <a href="http://www.jonathanleack.com" target="blank">Jonathan Leack</a>. Work in progress.</p>
       </div>
     );
   }

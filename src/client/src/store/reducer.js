@@ -23,7 +23,6 @@ const reducer = (state = initialState, action) => {
                 signedIn: false
             }
         case 'DISPLAY_SIGNIN_MODAL':
-        console.log("SHOWING SIGNIN");
             return {
                 ...state,
                 displaySigninModal: true

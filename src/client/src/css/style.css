@@ -1,5 +1,5 @@
 /* ======================================================== 
-// General styling
+// General styling.
 ========================================================*/
 p {
   color: #79adc4;
@@ -13,12 +13,14 @@ td {
 h3 {
   text-align: center;
   font-size: 24px;
-  -webkit-margin-after: 0px;
+  margin-bottom: 30px;
   color: #eeff00;
 }
 
 /* ======================================================== 
-// Header styling
+// Header styling. Note that this doesn't include the 
+// search or signin buttons since they're in a different 
+// container.
 ========================================================*/
 .header {
   display: inline-block;
@@ -33,34 +35,13 @@ h3 {
 .header h2 {
   cursor: pointer;
   float: right;
-  font-weight: 300;
+  line-height: 40px;
+  font-weight: 700;
   color: #eeff00;
 }
 
-.signin-register-btn {
-  position: absolute;
-  display: block;
-  top: 0;
-  right: 0;
-  line-height: 40px;
-  max-width: 300px;
-  margin: 40px;
-  font-size: 14px;
-  text-decoration: none;
-  color: #79adc4;
-  background-color: rgb(0, 101, 119);
-  border: none;
-  padding: 0px 15px;
-  border-radius: 8px 8px 8px 8px;
-  cursor: pointer;
-}
-
-.signin-register-btn:hover {
-  color: black;
-}
-
 /* ======================================================== 
-// Search container styling
+// Search container styling.
 ========================================================*/
 .search-form {
   position: absolute;
@@ -106,7 +87,32 @@ h3 {
 }
 
 /* ======================================================== 
-// Crypto List styling
+// Signin button styling.
+========================================================*/
+.signin-register-btn {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  line-height: 40px;
+  max-width: 300px;
+  margin: 40px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #79adc4;
+  background-color: rgb(0, 101, 119);
+  border: none;
+  padding: 0px 15px;
+  border-radius: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.signin-register-btn:hover {
+  color: black;
+}
+
+/* ======================================================== 
+// Crypto List styling.
 ========================================================*/
 .cryptos {
   width: 100%;
@@ -158,11 +164,11 @@ h3 {
 }
 
 /* ======================================================== 
-// Footer styling
+// Footer styling.
 ========================================================*/
 .footer {
   height: 300px;
-  border-top: 1px solid rgb(0, 101, 119);
+  border: 1px solid rgb(0, 101, 119);
   background-color: rgb(15, 15, 15);
 }
 
@@ -172,8 +178,12 @@ h3 {
   color: #79adc4;
 }
 
+.footer a {
+  color: #eeff00;
+}
+
 /* ======================================================== 
-// Signin and registration modal styling
+// Signin and registration modal styling.
 ========================================================*/
 .modal-close {
   text-align: right;
@@ -240,13 +250,12 @@ input.form-control {
   color: rgb(0, 101, 119);
 }
 
-
 /* ======================================================== 
-// Signin styling
+// Signin styling.
 ========================================================*/
 .signin-modal {
   width: 400px;
-  height: 620px;
+  height: 660px;
   margin: auto;
   position: absolute;
   text-align: center;
@@ -298,11 +307,11 @@ input.form-control {
 }
 
 /* ======================================================== 
-// Registration styling
+// Registration styling.
 ========================================================*/
 .register-modal {
   width: 400px;
-  height: 660px;
+  height: 700px;
   margin: auto;
   position: absolute;
   text-align: center;
@@ -349,7 +358,7 @@ input.form-control {
 }
 
 /* ======================================================== 
-// Account page styling
+// Account page styling.
 ========================================================*/
 .account h2 {
   text-align: center;
@@ -377,4 +386,34 @@ input.form-control {
 
 .signout:hover { 
   color: black;
+}
+
+/* ======================================================== 
+// Loading circle styling.
+========================================================*/
+.loader {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+  border: 3px solid #ddd;
+  border-top: 3px solid #42a5f5;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin: 280px auto 280px auto;
+}
+
+@-webkit-keyframes spin {
+  to {
+    border-top-color: #ec407a;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    border-top-color: #ec407a;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }

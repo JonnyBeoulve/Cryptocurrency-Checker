@@ -45,21 +45,16 @@ class SigninModal extends Component {
         noticeMessage: "Form incomplete."
       });
     } else {
-      console.log("Working Submit button");
-      this.props.onSignIn();
-      this.setState ({
-        notice: true,
-        noticeMessage: 'You have successfully signed in.',
-      });
-      /*axios ({
+      axios ({
         method: 'post',
-        url: window.location.href,
+        url: window.location.href + 'account/signin',
         data: { 
           username: this.state.username,
           password: this.state.password,
         }
       })
       .then(response => {
+        this.props.onSignin();
         this.setState({ 
           notice: true,
           noticeMessage: 'You have successfully signed in.'
@@ -70,9 +65,10 @@ class SigninModal extends Component {
         this.setState({ 
           notice: true,
           noticeMessage: 'An error occurred during sign in.'
-        });*/
-      };
-    } 
+        });
+      })
+    }
+  }
 
   /*======================================================================
   // Upon clicking the X on the top right of the modal, the modal
@@ -130,11 +126,18 @@ class SigninModal extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    signedInStatus: state.signedInStatus.signedIn
+  };
+}
+
 const mapDispatchToProps = dispatch => {
   return {
+    onSignin: () => dispatch({type: 'SIGNIN'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
     onDisplayRegister: () => dispatch({type: 'DISPLAY_REGISTER_MODAL'})
   };
 }
 
-export default connect(null, mapDispatchToProps)(SigninModal);
+export default connect(mapStateToProps, mapDispatchToProps)(SigninModal);

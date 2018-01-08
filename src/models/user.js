@@ -38,17 +38,20 @@ var UserSchema = new mongoose.Schema ({
 })
 
 /*============================================================================
-// Authenticate input against database documents
+// Authenticate input against database documents. First the username
+// will be matched with an entry in the database. Then that username's
+// password will be matched. A reverse bcrypt is required since passwords
+// are stored in hash format.
 ============================================================================*/
-UserSchema.statics.authenticate = function(emailAddress, password, callback) {
-	User.findOne({ emailAddress: emailAddress })
+UserSchema.statics.authenticate = function(username, password, callback) {
+	User.findOne({ username: username })
 		.exec(function (error, user) {
 		  if (error) {
-			return callback(error);
+				return callback(error);
 		  } else if ( !user ) {
-			var err = new Error('User not found.');
-			err.status = 401;
-			return callback(err);
+				var err = new Error('User not found.');
+				err.status = 401;
+				return callback(err);
 		  }
 
 		  bcrypt.compare(password, user.password , function(error, result) {

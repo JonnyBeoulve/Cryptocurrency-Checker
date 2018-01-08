@@ -40,7 +40,7 @@ class RegisterContainer extends Component {
   submitRegister = (e) => {
     e.preventDefault();
 
-    if (!this.state.username || !this.state.password || !this.state.emailAddress ) {
+    if (!this.state.username || !this.state.password || !this.state.emailAddress) {
       this.setState({ 
         notice: true,
         noticeMessage: "Form incomplete."
@@ -48,7 +48,7 @@ class RegisterContainer extends Component {
     } else {
       axios ({
         method: 'post',
-        url: window.location.href,
+        url: window.location.href + 'account/register',
         data: { 
           username: this.state.username,
           password: this.state.password,
@@ -125,7 +125,7 @@ class RegisterContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
+    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'})
   };
 }
 

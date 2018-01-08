@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 const path = require('path');
 
 const accountRoutes = require('./routes/account');
@@ -18,7 +19,7 @@ const {User} = require('./models/user');
 // If a database error occurs, throw object to console.
 ============================================================================*/
 mongoose.Promise = global.Promise;
-mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost:27017/crypto'), {useMongoClient: true});
+mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost:27017/cryptochecker'));
 const port = (process.env.PORT || 5000);
 var db = mongoose.connection;
 
@@ -27,10 +28,22 @@ db.on('error', function(err) {
 })
 
 /*============================================================================
+// Sessions will track signin state.
+============================================================================*/
+app.use(session({
+	secret: 'cryptomania',
+	resave: true,
+	saveUninitialized: false,
+	store: new MongoStore({
+	  mongooseConnection: db
+	})
+  }));
+
+/*============================================================================
 // HTTP methodology to import the Account and ApiCall routes.
 ============================================================================*/
-app.use('/', accountRoutes);
-app.use('/', apicallRoutes);
+app.use('/account', accountRoutes);
+app.use('/api', apicallRoutes);
 
 /*============================================================================
 // Set port to 5000 and initiate Morgan logging functionality.
