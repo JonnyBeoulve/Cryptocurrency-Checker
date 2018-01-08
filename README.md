@@ -30,5 +30,5 @@ Features yet to be implemented:
 
 * Session storing after login to avoid losing session if the page is reloaded.
 * Links on each crypto to load a full detail container.
-* A follow button that shows on the full detail container of each crypto so the user can follow/unfollow that crypto.
+* A follow/unfollow button that shows on the full detail container of each crypto so the user can follow/unfollow that crypto.
 * A button to show only the cryptos that the user is following.
