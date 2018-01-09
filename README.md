@@ -24,7 +24,7 @@ This is an in-development React Redux app that will display trending cryptocurre
 * Validator (https://www.npmjs.com/package/validator)
 
 ## Note
-This is an in-development app that will soon be hosted on Heroku. The front-end and back-end are working locally.
+This is an in-development app that will soon be host on Heroku. The front-end and back-end are working locally.
 
 Features yet to be implemented:
 
