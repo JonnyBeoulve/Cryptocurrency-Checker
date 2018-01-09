@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './css/index.css';
 
 const rootReducer = combineReducers({
+    detailsModalStatus: reducer,
     signedInStatus: reducer,
     signinModalStatus: reducer,
     registerModalStatus: reducer

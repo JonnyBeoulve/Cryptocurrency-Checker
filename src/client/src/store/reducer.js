@@ -2,9 +2,10 @@
 // By default the user will be signed out.
 ======================================================================*/
 const initialState = {
-    signedIn: false,
+    displayDetailsModal: false,
+    displayRegisterModal: false,
     displaySigninModal: false,
-    displayRegisterModal: false
+    signedIn: false
 }
 
 /*======================================================================
@@ -41,6 +42,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 displayRegisterModal: false
+        }
+        case 'DISPLAY_DETAILS_MODAL':
+            return {
+                ...state,
+                displayDetailsModal: true
+        }
+        case 'HIDE_DETAILS_MODAL':
+            return {
+                ...state,
+                displayDetailsModal: false
         }
     };
     return state;

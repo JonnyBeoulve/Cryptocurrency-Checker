@@ -3,30 +3,25 @@ import axios from 'axios';
 import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
 
+import CryptoDetailsModal from './CryptoDetailsModal';
 import Footer from './Footer';
 import Header from './Header';
 import Cryptos from './children/Cryptos';
-import Search from './children/Search';
 import RegisterModal from './RegisterModal';
+import Search from './children/Search';
 import SigninModal from './SigninModal';
-
-import SearchErrorImg from '../img/search_error.jpg';
 
 class HomeContainer extends Component {
   /*======================================================================
   // This will hold the state of the top 100 cryptocurrencies by default
-  // along with what modals should be visible. It is updated by the 
-  // Search functionality the find the data for a specific 
-  // cryptocurrency.
+  // along with what modals should be visible.
   ======================================================================*/
   constructor() {
     super();
     this.state = {
       cryptoList: [],
-      displaySearchError: false,
-      displaySigninModal: false,
-      displayCryptoTable: true,
-      loading: true
+      searchCrypto: [],
+      loading: true,
     };
   }
 
@@ -44,8 +39,6 @@ class HomeContainer extends Component {
   ======================================================================*/
   listCryptos = () => {
     this.setState({
-      displayCryptoTable: false, 
-      displaySearchError: false, 
       loading: true
     });
     axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=100`)
@@ -55,7 +48,6 @@ class HomeContainer extends Component {
       this.setState({
         cryptoList: res.data, 
         loading: false, 
-        displayCryptoTable: true
       })
     })
     .catch(err => {
@@ -68,9 +60,9 @@ class HomeContainer extends Component {
   // entered by the user.
   ======================================================================*/
   searchCrypto = (query) => {
+    this.props.onHideSignin();
+    this.props.onHideRegister();
     this.setState({
-      displayCryptoTable: false, 
-      displaySearchError: false, 
       loading: true
     });
     axios.get(`https://api.coinmarketcap.com/v1/ticker/${query}/`)
@@ -78,14 +70,15 @@ class HomeContainer extends Component {
       
     .then((res) => {
       this.setState({
-        cryptoList: res.data, 
+        searchCrypto: res.data[0], 
         loading: false, 
-        displayCryptoTable: true
       })
+      console.log(this.state.searchCrypto);
+      console.log(this.state.searchCrypto.name);
+      this.props.onDisplayDetails();
     })
     .catch(err => {
       this.setState({
-        displaySearchError: true, 
         loading: false
       })
       console.log('Error fetching and parsing data. This is likely caused by the search element not matching a coin name.', err)
@@ -101,6 +94,14 @@ class HomeContainer extends Component {
     this.props.onDisplaySignin();
   }
 
+  /*======================================================================
+  // Upon clicking the X on the top right of the modal, the modal
+  // will close.
+  ======================================================================*/
+  handleCloseSigninModal = (e) => {
+    this.props.onHideSignin();
+  }
+
   /*======================================================== 
   // Upon clicking Sign out this will sign the user out.
   ========================================================*/
@@ -112,13 +113,10 @@ class HomeContainer extends Component {
   // This will render the page. All core functionality can be found below.
   // Display signing modal will alter between a sign in an sign out
   // button depending on whether or not the user is signed in.
-  // Display crypto table will list either the top 100 cryptocurrencies or
-  // a specifically searched for cryptocurrency in table format. Display
-  // search error will notify the user that the cryptocurrency name they
-  // typed in couldn't be found. Loading will display a loading circle
-  // when a GET request is underway. Display signin modal will pop up a 
-  // login/registration modal when the signin button on the top right 
-  // of the page is clicked.
+  // Display crypto table will list either the top 100 cryptocurrencies.
+  // Loading will display a loading circle when a GET request is 
+  // underway. Display signin modal will pop up a login/registration 
+  // modal when the signin button on the top right  of the page is clicked.
   ======================================================================*/
   render() {
     return (
@@ -128,11 +126,9 @@ class HomeContainer extends Component {
         {(!this.props.signedInStatus)
             ? <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleShowModal}>Sign in</Button>
             : <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleSignout}>Sign out</Button> }
-        {(this.state.displayCryptoTable)
-            ? <Cryptos cryptosArray={this.state.cryptoList} />
-            : <p></p> }
-        {(this.state.displaySearchError)
-            ? <div className="search-error"><img src={SearchErrorImg} alt='' /><p>Woops!</p><p>No cryptocurrency with that name was found. Please enter the full name of the coin.</p></div>
+        <Cryptos cryptosArray={this.state.cryptoList} />
+        {(this.props.detailsModalStatus)
+            ? <CryptoDetailsModal selectedCrypto={this.state.searchCrypto} />
             : <p></p> }
         {(this.state.loading)
             ? <div className="loader"></div>
@@ -151,6 +147,7 @@ class HomeContainer extends Component {
 
 const mapStateToProps = state => {
   return {
+    detailsModalStatus: state.detailsModalStatus.displayDetailsModal,
     signedInStatus: state.signedInStatus.signedIn,
     signinModalStatus: state.signinModalStatus.displaySigninModal,
     registerModalStatus: state.registerModalStatus.displayRegisterModal
@@ -159,9 +156,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignout: () => dispatch({type: 'SIGNOUT'}),
+    onDisplayDetails: () => dispatch({type: 'DISPLAY_DETAILS_MODAL'}),
     onDisplaySignin: () => dispatch({type: 'DISPLAY_SIGNIN_MODAL'}),
-    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'})
+    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
+    onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
+    onSignout: () => dispatch({type: 'SIGNOUT'})
   };
 }
 
