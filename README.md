@@ -29,6 +29,4 @@ This is an in-development app that will soon be hosted on Heroku. The front-end 
 Features yet to be implemented:
 
 * Session storing after login to avoid losing session if the page is reloaded.
-* Links on each crypto to load a full detail container.
-* A follow/unfollow button in the full detail container of each crypto that allows users to follow/unfollow that crypto.
-* A button that displays only the cryptos that the user is following.
+* A button that will display only the cryptos that the user is following.
