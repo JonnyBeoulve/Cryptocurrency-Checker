@@ -6,7 +6,7 @@ You can view an alpha staging version of this program at the following link:
 
 https://cryptocurrency-checker.herokuapp.com/
 
-Note that this is an in-development version of the program that has known bugs and missing features.
+Note that this is an in-development version of the program that has some bugs and is not feature complete.
 
 ## How to Use the Program
 1. From terminal, install node dependencies by typing 'npm install' in the root folder.
