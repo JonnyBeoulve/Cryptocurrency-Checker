@@ -35,7 +35,7 @@ This is an in-development app that will soon be host on Heroku. The front-end an
 
 Work yet to be completed:
 
-* Responsive styling
+* Responsive styling.
 * Session storing after login to avoid losing session if the page is reloaded.
 * A button that will display only the cryptos that the user is following.
 * A complete debugging sweep.
