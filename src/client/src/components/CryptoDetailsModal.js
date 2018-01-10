@@ -11,6 +11,18 @@ import { connect } from 'react-redux';
 class CryptoDetailsModal extends Component {
 
   /*======================================================================
+  // If the user clicks the follow button they will have that cryto
+  // added to their user document in the database. This will allow
+  // them to only view that crypto and any others they've followed
+  // at the click of a button.
+  ======================================================================*/
+  submitFollow = (e) => {
+    e.preventDefault();
+
+    console.log("Follow handler successful. Feature will be implemented soon!");
+  }
+
+  /*======================================================================
   // If the user clicks the X on the top right of the details modal,
   // it will close.
   ======================================================================*/
@@ -26,7 +38,7 @@ class CryptoDetailsModal extends Component {
     <div className="crypto-detail">
       <p className="modal-close" onClick={this.handleHideDetails}>X</p>
       <h2>{selCrypto.name} ({selCrypto.symbol})</h2>
-      <Button bsStyle="primary" className="follow-btn">Follow</Button>
+      <Button bsStyle="primary" className="follow-btn" onClick={this.submitFollow}>Follow</Button>
       <p>Rank: <span className="text-symbol-styling">#</span>{selCrypto.rank}</p>
       <p>Price: {selCrypto.price_usd} <span className="text-symbol-styling">USD</span></p>
       <p>Market Cap: {selCrypto.market_cap_usd} <span className="text-symbol-styling">USD</span></p>
