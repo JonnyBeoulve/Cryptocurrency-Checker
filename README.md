@@ -37,5 +37,6 @@ Work yet to be completed:
 
 * Responsive styling.
 * Session storing after login to avoid losing session if the page is reloaded.
+* GET requests performed on the back-end instead of front-end (front-end was initially used for early development).
 * A button that will display only the cryptos that the user is following.
 * A complete debugging sweep.
