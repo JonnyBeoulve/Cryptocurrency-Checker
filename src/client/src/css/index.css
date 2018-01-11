@@ -1,12 +1,12 @@
 /*======================================================== 
 // General page styling
 ========================================================*/
-@import url('https://fonts.googleapis.com/css?family=Sarpanch');
+@import url('https://fonts.googleapis.com/css?family=Play');
 
 body {
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   margin-top: 20px;
-  background-color: rgb(36, 36, 36);
+  background: linear-gradient(to right, black, rgb(36, 36, 36));
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -20,4 +20,11 @@ body {
 }
 :-moz-placeholder { /* Firefox 18- */
   color: #79adc4;
+}
+
+::selection {
+  background: #00ffea; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #00ffea; /* Gecko Browsers */
 }

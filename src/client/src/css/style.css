@@ -28,16 +28,18 @@ h3 {
 
 .header-img {
   padding: 10px;
-  height: 60px;
+  height: 80px;
   float: left;
 }
 
 .header h2 {
   cursor: pointer;
   float: right;
-  line-height: 40px;
-  font-weight: 700;
+  line-height: 45px;
+  font-size: 32px;
+  font-weight: 300;
   color: #00ffea;
+  text-shadow: 2px 2px black;
 }
 
 /* ======================================================== 
@@ -46,15 +48,16 @@ h3 {
 .search-form {
   position: absolute;
   display: block;
-  top: 0;
+  top: 10px;
   right: 80px;
   max-width: 420px;
   margin: 40px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .search-input {
   color: #79adc4;
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   float: left;
   height: 40px;
   width: 180px;
@@ -92,7 +95,7 @@ h3 {
 .signin-register-btn {
   position: absolute;
   display: block;
-  top: 0;
+  top: 10px;
   right: 0;
   line-height: 40px;
   max-width: 300px;
@@ -101,6 +104,7 @@ h3 {
   text-decoration: none;
   color: #79adc4;
   background-color: rgb(0, 101, 119);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   border: none;
   padding: 0px 15px;
   border-radius: 8px 8px 8px 8px;
@@ -125,9 +129,10 @@ h3 {
   height: 40px;
   width: 100%;
   line-height: 10px;
-  background-color: rgb(15, 15, 15);
+  background-color: black;
   border-top: 2px ridge rgb(0, 101, 119);
   border-bottom: 2px ridge rgb(0, 101, 119);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .cryptos-header p {
@@ -187,6 +192,7 @@ h3 {
   border-radius: 0 0.35em 0.35em 0;
   border: 2px solid rgb(0, 101, 119);
   border-style: ridge;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .crypto-detail h2 {
@@ -220,10 +226,10 @@ h3 {
 // Footer styling.
 ========================================================*/
 .footer {
-  margin: 0px 0px 0px 0px;
+  margin: -20px 0px 0px 0px;
   height: 300px;
   border-top: 1px solid rgb(0, 101, 119);
-  background-color: rgb(15, 15, 15);
+  background: linear-gradient(to right, black, rgb(36, 36, 36));
 }
 
 .footer p {
@@ -256,7 +262,7 @@ h3 {
   height: 40px;
   border-radius: 0 0.35em 0.35em 0;
   font-size: 1em;
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   background-color: rgb(36, 36, 36);
   color: #79adc4;
   padding: 10px 15px;
@@ -281,7 +287,7 @@ label.control-label {
 }
 
 input.form-control {
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   width: 300px;
   margin: 10px auto;
 }
@@ -321,6 +327,7 @@ input.form-control {
   border-radius: 0 0.35em 0.35em 0;
   border: 2px solid rgb(0, 101, 119);
   border-style: ridge;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .signin-form {
@@ -330,10 +337,9 @@ input.form-control {
 }
 
 .signin-submit {
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 30px auto 0px auto;
   text-align: center;
   font-size: 120%;
   line-height: 40px;
@@ -377,6 +383,7 @@ input.form-control {
   border-radius: 0 0.35em 0.35em 0;
   border: 2px solid rgb(0, 101, 119);
   border-style: ridge;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .register-form {
@@ -386,10 +393,9 @@ input.form-control {
 }
 
 .register-submit {
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 30px auto 0px auto;
   text-align: center;
   font-size: 120%;
   line-height: 40px;
@@ -426,7 +432,7 @@ input.form-control {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Sarpanch', arial;
+  font-family: 'Play', arial;
   font-size: 120%;
   line-height: 40px;
   text-decoration: none;
@@ -453,7 +459,7 @@ input.form-control {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  margin: 280px auto 280px auto;
+  margin: 280px auto 400px auto;
 }
 
 @-webkit-keyframes spin {

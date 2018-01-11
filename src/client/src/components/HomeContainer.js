@@ -13,8 +13,11 @@ import SigninModal from './SigninModal';
 
 class HomeContainer extends Component {
   /*======================================================================
-  // This will hold the state of the top 100 cryptocurrencies by default
-  // along with what modals should be visible.
+  // This will hold the state of the top 100 cryptocurrencies that are
+  // received from a GET request in the listCryptos function below,
+  // the data for a specific crypto that is received from a GET request
+  // in the searchCrypto function below, along with whether or not
+  // to show a loading circle during a GET request.
   ======================================================================*/
   constructor() {
     super();
@@ -51,30 +54,35 @@ class HomeContainer extends Component {
       })
     })
     .catch(err => {
+      this.setState({
+        loading: false
+      })
       console.log('Error fetching and parsing data.', err)
     })
   }
 
   /*======================================================================
   // This will search for a cryptocurrency that matches the string
-  // entered by the user.
+  // entered by the user. Upon a search being submitted any open modals
+  // will be closed before a GET request is sent. If successful,
+  // a CryptoDetailsModal will show, displaying data for a specific
+  // cryptocurrency.
   ======================================================================*/
   searchCrypto = (query) => {
     this.props.onHideSignin();
     this.props.onHideRegister();
     this.setState({
-      loading: true
+      loading: true,
+      searchCrypto: ''
     });
     axios.get(`https://api.coinmarketcap.com/v1/ticker/${query}/`)
     //axios.get(`/api/searchcrypto`)
       
     .then((res) => {
       this.setState({
-        searchCrypto: res.data[0], 
         loading: false, 
+        searchCrypto: res.data[0]
       })
-      console.log(this.state.searchCrypto);
-      console.log(this.state.searchCrypto.name);
       this.props.onDisplayDetails();
     })
     .catch(err => {
@@ -126,12 +134,11 @@ class HomeContainer extends Component {
         {(!this.props.signedInStatus)
             ? <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleShowModal}>Sign in</Button>
             : <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleSignout}>Sign out</Button> }
-        <Cryptos cryptosArray={this.state.cryptoList} />
-        {(this.props.detailsModalStatus)
-            ? <CryptoDetailsModal selectedCrypto={this.state.searchCrypto} />
-            : <p></p> }
         {(this.state.loading)
             ? <div className="loader"></div>
+            : <Cryptos cryptosArray={this.state.cryptoList} /> }
+        {(this.props.detailsModalStatus)
+            ? <CryptoDetailsModal selectedCrypto={this.state.searchCrypto} />
             : <p></p> }
         {(this.props.signinModalStatus)
             ? <SigninModal />
