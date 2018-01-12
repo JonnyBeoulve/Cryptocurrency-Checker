@@ -31,7 +31,7 @@ Note that this is an in-development version of the program that has some bugs an
 * Validator (https://www.npmjs.com/package/validator)
 
 ## Note
-This is an in-development app that will soon be host on Heroku. The front-end and back-end are working locally.
+This is an in-development app.
 
 Work yet to be completed:
 
