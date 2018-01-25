@@ -24,7 +24,7 @@ class HomeContainer extends Component {
     this.state = {
       cryptoList: [],
       searchCrypto: [],
-      loading: true,
+      loading: true
     };
   }
 

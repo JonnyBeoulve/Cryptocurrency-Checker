@@ -11,6 +11,19 @@ import { connect } from 'react-redux';
 class CryptoDetailsModal extends Component {
 
   /*======================================================================
+  // This will track the state of the notice message that informs users
+  // about whether they need to sign in to follow cryptos, or if a follow
+  // request fails.
+  ======================================================================*/
+  constructor() {
+    super();
+    this.state = {
+      notice: false,
+      noticeMessage: ''
+    }
+  }
+
+  /*======================================================================
   // If the user clicks the follow button they will have that cryto
   // added to their user document in the database. This will allow
   // them to only view that crypto and any others they've followed
@@ -19,7 +32,26 @@ class CryptoDetailsModal extends Component {
   submitFollow = (e) => {
     e.preventDefault();
 
-    console.log("Follow handler successful. Feature will be implemented soon!");
+    axios ({
+      method: 'post',
+      url: window.location.href + 'account/follow',
+      data: {
+        followCrypto: this.selCrypto
+      }
+    })
+    .then(response => {
+      this.setState({
+        notice: true,
+        noticeMessage: `Successfully followed + ${this.selCrypto}`
+      })
+    })
+    .catch(error => {
+      this.setState({
+        notice: true,
+        noticeMessage: 'Following failed. Note that you must be signed in.'
+      })
+      console.log('Error occurred while signing in.', error);
+    })
   }
 
   /*======================================================================
@@ -45,6 +77,9 @@ class CryptoDetailsModal extends Component {
       <p>Change 1 Hour: {selCrypto.percent_change_1h} <span className="text-symbol-styling">%</span></p>
       <p>Change 24 Hours: {selCrypto.percent_change_24h} <span className="text-symbol-styling">%</span></p>
       <p>Change 7 Days: {selCrypto.percent_change_7d} <span className="text-symbol-styling">%</span></p>
+      {(this.state.notice)
+              ? <p>{this.state.noticeMessage}</p>
+              : <p></p> }
     </div>
     )
   }

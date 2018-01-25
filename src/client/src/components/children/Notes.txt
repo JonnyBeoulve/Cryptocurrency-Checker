@@ -1,0 +1,1 @@
+Style rows individually instead of on a per cell basis.
