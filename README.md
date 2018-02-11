@@ -31,11 +31,12 @@ Note that this is an in-development version of the program that has some bugs an
 * Validator (https://www.npmjs.com/package/validator)
 
 ## Note
-This is an in-development app that will soon be host on Heroku. The front-end and back-end are working locally.
+This is an in-development app.
 
 Work yet to be completed:
 
 * Responsive styling.
 * Session storing after login to avoid losing session if the page is reloaded.
+* GET requests performed on the back-end instead of front-end (front-end was initially used for early development).
 * A button that will display only the cryptos that the user is following.
 * A complete debugging sweep.

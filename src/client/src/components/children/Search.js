@@ -50,7 +50,7 @@ class Search extends Component {
             onChange={this.onSearchChange}
             name="search" 
             ref={(input) => this.query = input}
-            placeholder="Search currency"
+            placeholder="Search/Follow currency"
             className="search-input" />
         <button type="submit" className="search-button">
           <svg fill="#79adc4" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

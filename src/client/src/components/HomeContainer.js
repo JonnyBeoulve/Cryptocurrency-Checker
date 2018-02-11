@@ -24,7 +24,7 @@ class HomeContainer extends Component {
     this.state = {
       cryptoList: [],
       searchCrypto: [],
-      loading: true,
+      loading: true
     };
   }
 
@@ -87,8 +87,9 @@ class HomeContainer extends Component {
     })
     .catch(err => {
       this.setState({
-        loading: false
+        loading: false,
       })
+      this.props.onDisplayDetails();
       console.log('Error fetching and parsing data. This is likely caused by the search element not matching a coin name.', err)
     })
   }

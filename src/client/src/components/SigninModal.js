@@ -8,7 +8,7 @@ import SigninImg from '../img/signin_img.png';
 class SigninModal extends Component {
 
   /*======================================================================
-  // This will track the state of the signin and registration forms.
+  // This will track the state of the signin form.
   ======================================================================*/
   constructor() {
     super();
@@ -31,7 +31,7 @@ class SigninModal extends Component {
 
   /*======================================================================
   // This will handle submission of the signin form. If any fields
-  // are empty, show error within main div. Otherwise, post data
+  // are empty, show error within the div. Otherwise, post data
   // to the database (which has validation of its own) and make sure
   // no errors are shown anymore. If an error is caught during the
   // transaction, post to console.
@@ -88,7 +88,7 @@ class SigninModal extends Component {
   }
 
   /*======================================================================
-  // This will render the login and registration modals.
+  // This will render the signin modal.
   ======================================================================*/
   render() {
     return (
@@ -109,7 +109,7 @@ class SigninModal extends Component {
                 <FormControl.Feedback />
                 <FormControl
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   onChange={this.onChange} />
                 <FormControl.Feedback />

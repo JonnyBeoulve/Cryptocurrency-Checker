@@ -107,7 +107,7 @@ class RegisterContainer extends Component {
                 <FormControl.Feedback />
                 <FormControl
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   onChange={this.onChange} />
                 <FormControl.Feedback />

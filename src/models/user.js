@@ -31,7 +31,7 @@ var UserSchema = new mongoose.Schema ({
 	followedCryptos: {
 		type: Array,
 		required: false,
-		unique: false,
+		unique: true,
 		maxlength: 10
 		}
 	}
