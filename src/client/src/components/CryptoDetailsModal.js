@@ -26,7 +26,6 @@ class CryptoDetailsModal extends Component {
   }
 
   /*======================================================================
-<<<<<<< HEAD
   // This will track the state of the notice message that informs users
   // about whether they need to sign in to follow cryptos, or if a follow
   // request fails.
@@ -41,8 +40,6 @@ class CryptoDetailsModal extends Component {
   }
 
   /*======================================================================
-=======
->>>>>>> origin/master
   // If the user clicks the follow button they will have that cryto
   // added to their user document in the database. This will allow
   // them to only view that crypto and any others they've followed
@@ -52,11 +49,7 @@ class CryptoDetailsModal extends Component {
     e.preventDefault();
 
     axios ({
-<<<<<<< HEAD
       method: 'put',
-=======
-      method: 'post',
->>>>>>> origin/master
       url: window.location.href + 'account/follow',
       data: {
         followCrypto: this.selCrypto
@@ -65,21 +58,13 @@ class CryptoDetailsModal extends Component {
     .then(response => {
       this.setState({
         notice: true,
-<<<<<<< HEAD
         noticeMessage: `Successfully followed!`
-=======
-        noticeMessage: `Successfully followed + ${this.selCrypto}`
->>>>>>> origin/master
       })
     })
     .catch(error => {
       this.setState({
         notice: true,
-<<<<<<< HEAD
         noticeMessage: 'Follow failed.'
-=======
-        noticeMessage: 'Following failed. Note that you must be signed in.'
->>>>>>> origin/master
       })
       console.log('Error occurred while signing in.', error);
     })
