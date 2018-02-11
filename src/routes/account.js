@@ -59,11 +59,7 @@ router.post('/signin', function(req, res, next) {
 // cryptocurrency is already followed, then a message will be displayed to
 // the user.
 ============================================================================*/
-<<<<<<< HEAD
 router.put('/follow', function(req, res, next) {
-=======
-router.update('/follow', function(req, res, next) {
->>>>>>> origin/master
 	if (!req.session.userId) {
 		console.log("User isn't currently signed in!");
 		return;
