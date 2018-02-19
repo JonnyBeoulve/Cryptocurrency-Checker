@@ -1,5 +1,5 @@
 # Cryptocurrency Checker
-This is an in-development React Redux app that will display trending cryptocurrencies and provide pricing information. Users will be able to register and signin to follow and track cryptocurrencies of their choice. Files are served by a back-end built in Node/Express, with a MongoDB database that stores a hashed user login and cryptocurrency preferences.
+This is a React Redux app that displays trending cryptocurrencies and provide pricing information. Users will be able to register and signin to follow and track cryptocurrencies of their choice. Files are served by a back-end built in Node/Express, with a MongoDB database that stores a hashed user login and cryptocurrency preferences.
 
 ## Production Version
 You can view an alpha staging version of this program at the following link:
