@@ -14,21 +14,14 @@ Note that this is an in-development version of the program that has some bugs an
 3. You can interface with the program by visiting 'http://localhost:5000'.
 
 ## Programming
-* Axios (https://www.npmjs.com/package/axios)
-* BCrypt (https://www.npmjs.com/package/bcrypt)
-* Body Parser (https://www.npmjs.com/package/body-parser)
-* Connect Mongo (https://www.npmjs.com/package/connect-mongo)
-* Express (https://www.npmjs.com/package/express)
-* Express Session (https://www.npmjs.com/package/express-session)
-* MongoDB (https://www.npmjs.com/package/mongodb)
-* Mongoose (https://www.npmjs.com/package/mongoose)
-* Morgan (https://www.npmjs.com/package/morgan)
-* Path (https://www.npmjs.com/package/path)
-* React (https://www.npmjs.com/package/react)
-* React Bootstrap (https://www.npmjs.com/package/react-bootstrap)
-* React Redux (https://www.npmjs.com/package/react-redux)
-* Request (https://www.npmjs.com/package/request)
-* Validator (https://www.npmjs.com/package/validator)
+* HTML
+* CSS
+* JavaScript
+* React.js
+* Redux
+* Node.js
+* Express
+* MongoDB
 
 ## Note
 This is an in-development app.
