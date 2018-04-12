@@ -3,13 +3,13 @@ import axios from 'axios';
 import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
 
-import CryptoDetailsModal from './CryptoDetailsModal';
-import Footer from './Footer';
-import Header from './Header';
-import Cryptos from './children/Cryptos';
-import RegisterModal from './RegisterModal';
-import Search from './children/Search';
-import SigninModal from './SigninModal';
+import CryptoDetailsModal from '../components/CryptoDetailsModal';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Cryptos from '../components/children/Cryptos';
+import RegisterModal from '../components/RegisterModal';
+import Search from '../components/children/Search';
+import SigninModal from '../components/SigninModal';
 
 class HomeContainer extends Component {
   /*======================================================================
@@ -142,10 +142,13 @@ class HomeContainer extends Component {
             ? <CryptoDetailsModal selectedCrypto={this.state.searchCrypto} />
             : <p></p> }
         {(this.props.signinModalStatus)
-            ? <SigninModal />
+            ? <SigninModal msg={this.state.message} />
             : <p></p> }
         {(this.props.registerModalStatus)
-            ? <RegisterModal />
+            ? <RegisterModal msg={this.state.message} />
+            : <p></p> }
+        {(this.props.messageStatus)
+            ? <div className="message-div"><p>{this.props.currentMessageText}</p><span onClick={() => {this.props.onHideMessage()}}>X</span></div>
             : <p></p> }
         <Footer />
       </div>
@@ -158,7 +161,9 @@ const mapStateToProps = state => {
     detailsModalStatus: state.detailsModalStatus.displayDetailsModal,
     signedInStatus: state.signedInStatus.signedIn,
     signinModalStatus: state.signinModalStatus.displaySigninModal,
-    registerModalStatus: state.registerModalStatus.displayRegisterModal
+    registerModalStatus: state.registerModalStatus.displayRegisterModal,
+    messageStatus: state.messageStatus.showMessage,
+    currentMessageText: state.currentMessageText.messageText
   };
 }
 
@@ -168,7 +173,8 @@ const mapDispatchToProps = dispatch => {
     onDisplaySignin: () => dispatch({type: 'DISPLAY_SIGNIN_MODAL'}),
     onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
-    onSignout: () => dispatch({type: 'SIGNOUT'})
+    onSignout: () => dispatch({type: 'SIGNOUT'}),
+    onHideMessage: () => dispatch({type: 'HIDE_MESSAGE'})
   };
 }
 

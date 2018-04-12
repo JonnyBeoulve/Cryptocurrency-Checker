@@ -14,9 +14,7 @@ class SigninModal extends Component {
     super();
     this.state = {
       username: '',
-      password: '',
-      notice: false,
-      noticeMessage: '',
+      password: ''
     };
   }
 
@@ -40,10 +38,7 @@ class SigninModal extends Component {
     e.preventDefault();
 
     if (!this.state.username || !this.state.password) {
-      this.setState({ 
-        notice: true,
-        noticeMessage: "Form incomplete."
-      });
+      this.props.onFormIncomplete();
     } else {
       axios ({
         method: 'post',
@@ -55,17 +50,11 @@ class SigninModal extends Component {
       })
       .then(response => {
         this.props.onSignin();
-        this.setState({ 
-          notice: true,
-          noticeMessage: 'You have successfully signed in.'
-        });
+        this.props.onSigninSuccess();
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
-        this.setState({ 
-          notice: true,
-          noticeMessage: 'An error occurred during sign in.'
-        });
+        this.props.onSigninError();
       })
     }
   }
@@ -118,9 +107,6 @@ class SigninModal extends Component {
             </form>
             <a className="create-account" onClick={this.handleShowRegisterModal}><p>Create an account</p></a>
           </div>
-          {(!this.state.notice)
-            ? <p></p>
-            : <p>{this.state.noticeMessage}</p> }
       </div>
     )
   }
@@ -136,7 +122,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onSignin: () => dispatch({type: 'SIGNIN'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
-    onDisplayRegister: () => dispatch({type: 'DISPLAY_REGISTER_MODAL'})
+    onDisplayRegister: () => dispatch({type: 'DISPLAY_REGISTER_MODAL'}),
+    onSigninSuccess: () => dispatch({type: 'DISPLAY_MESSAGE_SIGNIN_SUCCESS'}),
+    onSigninError: () => dispatch({type: 'DISPLAY_MESSAGE_SIGNIN_ERROR'}),
+    onFormIncomplete: () => dispatch({type: 'DISPLAY_MESSAGE_FORM_INCOMPLETE'})
   };
 }
 

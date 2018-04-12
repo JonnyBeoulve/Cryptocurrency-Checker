@@ -2,7 +2,7 @@
   "name": "cryptocurrency-checker",
   "author": "Jonathan Leack",
   "license": "ISC",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "This is an in-development React Redux app that will display trending cryptocurrencies and provide pricing information.",
   "engines": {
     "node": "6.11.3",

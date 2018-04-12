@@ -47,15 +47,18 @@ class CryptoDetailsModal extends Component {
   ======================================================================*/
   submitFollow = (e) => {
     e.preventDefault();
-
     axios ({
-      method: 'put',
+      method: 'post',
       url: window.location.href + 'account/follow',
       data: {
-        followCrypto: this.selCrypto
+        username: 'tacojohn',
+        password: 'tacojohn',
+        emailAddress: 'tacojohn@gmail.com',
+        followedCrypto: this.props.selectedCrypto.name
       }
     })
     .then(response => {
+      console.log(response);
       this.setState({
         notice: true,
         noticeMessage: `Successfully followed!`

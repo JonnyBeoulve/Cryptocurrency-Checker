@@ -15,9 +15,7 @@ class RegisterContainer extends Component {
     this.state = {
       username: '',
       password: '',
-      emailAddress: '',
-      notice: false,
-      noticeMessage: ''
+      emailAddress: ''
     };
   }
 
@@ -41,10 +39,7 @@ class RegisterContainer extends Component {
     e.preventDefault();
 
     if (!this.state.username || !this.state.password || !this.state.emailAddress) {
-      this.setState({ 
-        notice: true,
-        noticeMessage: "Form incomplete."
-      });
+      this.props.onFormIncomplete();
     } else {
       axios ({
         method: 'post',
@@ -56,17 +51,11 @@ class RegisterContainer extends Component {
         }
       })
       .then(response => {
-        this.setState({ 
-          notice: true,
-          noticeMessage: 'You have successfully registered.'
-        });
+        this.props.onRegisterSuccess();
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
-        this.setState({ 
-          notice: true,
-          noticeMessage: 'An error occurred during registration.'
-        });
+        this.props.onRegisterError();
       })
     }
   } 
@@ -115,9 +104,6 @@ class RegisterContainer extends Component {
               <Button className="register-submit" bsStyle="danger" bsSize="large" type="submit">Submit</Button>
             </form>
           </div>
-          {(this.state.notice)
-            ? <p>{this.state.noticeMessage}</p>
-            : <p></p> }
       </div>
     )
   }
@@ -125,7 +111,10 @@ class RegisterContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'})
+    onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
+    onRegisterSuccess: () => dispatch({type: 'DISPLAY_MESSAGE_REGISTER_SUCCESS'}),
+    onRegisterError: () => dispatch({type: 'DISPLAY_MESSAGE_REGISTER_ERROR'}),
+    onFormIncomplete: () => dispatch({type: 'DISPLAY_MESSAGE_FORM_INCOMPLETE'})
   };
 }
 

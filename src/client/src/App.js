@@ -3,7 +3,7 @@ import { BrowserRouter,
          Route,
          Switch } from 'react-router-dom';
 
-import HomeContainer from './components/HomeContainer';
+import HomeContainer from './containers/HomeContainer';
 import './css/style.css';
 
 /*======================================================================
