@@ -52,6 +52,7 @@ class RegisterContainer extends Component {
       })
       .then(response => {
         this.props.onRegisterSuccess();
+        this.props.onHideRegister();
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);

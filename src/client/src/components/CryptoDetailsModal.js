@@ -32,10 +32,8 @@ class CryptoDetailsModal extends Component {
   ======================================================================*/
   componentDidMount() {
     if (!this.props.selectedCrypto) {
-      this.setState({
-        notice: true,
-        noticeMessage: 'A cryptocurrency with that name was not found. Try spelling out the full name.'
-      })
+      this.props.onHideDetails();
+      this.props.onSearchFailed();
     }
   }
 
@@ -59,16 +57,10 @@ class CryptoDetailsModal extends Component {
     })
     .then(response => {
       console.log(response);
-      this.setState({
-        notice: true,
-        noticeMessage: `Successfully followed!`
-      })
+      this.props.onFollowSuccess();
     })
     .catch(error => {
-      this.setState({
-        notice: true,
-        noticeMessage: 'Follow failed.'
-      })
+      this.props.onFollowFailed();
       console.log('Error occurred while signing in.', error);
     })
   }
@@ -97,7 +89,9 @@ class CryptoDetailsModal extends Component {
     <div className="crypto-detail">
       <p className="modal-close" onClick={this.handleHideDetails}>X</p>
       <h2>{selCrypto.name} ({selCrypto.symbol})</h2>
-      <Button bsStyle="primary" className="follow-btn" onClick={this.submitFollow}>Follow</Button>
+      {(this.props.signedInStatus)
+        ? <Button bsStyle="primary" className="follow-btn" onClick={this.submitFollow}>Follow</Button>
+        : <p></p> }
       <p>Rank: <span className="text-symbol-styling">#</span>{selCrypto.rank}</p>
       <p>Price: $ {selCrypto.price_usd}</p>
       <p><NumberFormat value={selCrypto.market_cap_usd} displayType={'text'} thousandSeparator={true} renderText={value => <div>Market Cap: $ {value} </div>} /></p>
@@ -114,7 +108,8 @@ class CryptoDetailsModal extends Component {
 
 const mapStateToProps = state => {
   return {
-    detailsModalStatus: state.detailsModalStatus.displayDetailsModal
+    detailsModalStatus: state.detailsModalStatus.displayDetailsModal,
+    signedInStatus: state.signedInStatus.signedIn
   };
 }
 
@@ -124,6 +119,9 @@ const mapDispatchToProps = dispatch => {
     onHideDetails: () => dispatch({type: 'HIDE_DETAILS_MODAL'}),
     onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
+    onSearchFailed: () => dispatch({type: 'SEARCH_FAILED'}),
+    onFollowSuccess: () => dispatch({type: 'FOLLOW_SUCCEED'}),
+    onFollowFailed: () => dispatch({type: 'FOLLOW_FAILED'})
   };
 }
 

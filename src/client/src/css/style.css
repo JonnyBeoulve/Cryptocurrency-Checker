@@ -188,9 +188,9 @@ h3 {
 ========================================================*/
 .crypto-detail {
   width: 400px;
-  height: 420px;
+  height: 380px;
   margin: auto;
-  position: absolute;
+  position: fixed;
   text-align: center;
   left: 0;
   right: 0;

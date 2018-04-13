@@ -51,6 +51,7 @@ class SigninModal extends Component {
       .then(response => {
         this.props.onSignin();
         this.props.onSigninSuccess();
+        this.props.onHideSignin();
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);

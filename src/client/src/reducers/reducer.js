@@ -93,6 +93,24 @@ const reducer = (state = initialState, action) => {
                 showMessage: true,
                 messageText: 'Form incomplete.'
         }
+        case 'FOLLOW_SUCCESS':
+            return {
+                ...state,
+                showMessage: true,
+                messageText: 'Follow succeeded.'
+        }
+        case 'FOLLOW_FAILED':
+            return {
+                ...state,
+                showMessage: true,
+                messageText: 'Follow failed.'
+        }
+        case 'SEARCH_FAILED':
+            return {
+                ...state,
+                showMessage: true,
+                messageText: "A cryptocurrency with that name wasn't found."
+        }
     };
     return state;
 }
