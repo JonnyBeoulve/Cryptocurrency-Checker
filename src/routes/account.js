@@ -9,13 +9,15 @@ router.use(bodyParser.json());
 
 /*============================================================================
 // Upon submitting a registration request, this will post the user's username,
-// password, and email address to the Mongo database.
+// password, email address, and a default crypt follow of bitcoin to the 
+// Mongo database.
 ============================================================================*/
 router.post('/register', function(req, res, next) {
 	var user = {
 		username: req.body.username,
 		password: req.body.password,
-		emailAddress: req.body.emailAddress
+		emailAddress: req.body.emailAddress,
+		followedCrypto: 'bitcoin'
 	};
 
 	User.create(user, (err, user) => {
@@ -55,26 +57,22 @@ router.post('/signin', function(req, res, next) {
 
 /*============================================================================
 // When a user clicks the follow button on a Crypto Detail Modal, the system
-// will attempt to add that cryptocurrency to the user's profile. If the
-// cryptocurrency is already followed, then a message will be displayed to
-// the user.
+// will attempt to add that cryptocurrency to the user's profile.
 ============================================================================*/
-router.post('/follow', function(req, res, next) {
+router.put('/follow', function(req, res, next) {
 	if (!req.session.userId) {
 		console.log("User isn't currently signed in!");
 		return;
-	} else {
-		console.log(req.body);
-		User.update(req.body, {
-			where: [{ 
-				_id: req.session.userId
-			}]})
-			.then(function() {
-				res.location('/').status(201).json();
-			}).catch(errors => {
-				console.log('Error occurred during update.', errors);
-				return;
-		  });
+	} else { 
+		User.findByIdAndUpdate(req.session.userId, { $set: { followedCrypto: req.body.followedCrypto }}, function(err, user) {
+			if(err) {
+				res.status(400);
+				return next(err);
+			} else {
+				res.location('/')
+				.status(201).json();
+			}
+		});
 	}
 })
 

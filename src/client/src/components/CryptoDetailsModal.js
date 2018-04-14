@@ -46,12 +46,9 @@ class CryptoDetailsModal extends Component {
   submitFollow = (e) => {
     e.preventDefault();
     axios ({
-      method: 'post',
+      method: 'put',
       url: window.location.href + 'account/follow',
       data: {
-        username: 'tacojohn',
-        password: 'tacojohn',
-        emailAddress: 'tacojohn@gmail.com',
         followedCrypto: this.props.selectedCrypto.name
       }
     })
@@ -61,7 +58,7 @@ class CryptoDetailsModal extends Component {
     })
     .catch(error => {
       this.props.onFollowFailed();
-      console.log('Error occurred while signing in.', error);
+      console.log('Error occurred during follow.', error);
     })
   }
 
@@ -120,7 +117,7 @@ const mapDispatchToProps = dispatch => {
     onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
     onSearchFailed: () => dispatch({type: 'SEARCH_FAILED'}),
-    onFollowSuccess: () => dispatch({type: 'FOLLOW_SUCCEED'}),
+    onFollowSuccess: () => dispatch({type: 'FOLLOW_SUCCESS'}),
     onFollowFailed: () => dispatch({type: 'FOLLOW_FAILED'})
   };
 }

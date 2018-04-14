@@ -27,12 +27,13 @@ var UserSchema = new mongoose.Schema ({
 			isAsync: false,
 			validator: validator.isEmail, 
 				message: 'Not a valid email.'
-		},
+		}
+	},
 	followedCrypto: {
 		type: String,
-		required: false,
-		unique: false
-		}
+		required: true,
+		unique: false,
+		default: 'bitcoin'
 	}
 })
 
