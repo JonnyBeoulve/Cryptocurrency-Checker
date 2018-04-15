@@ -527,3 +527,61 @@ input.form-control {
             transform: rotate(360deg);
   }
 }
+
+/*======================================================== 
+// Responsive styling.
+========================================================*/
+@media only screen and (max-width: 987px) {
+  .header-img {
+    margin: 20px 0 0 0;
+  }
+
+  .header-branding h2 {
+    font-size: 1.2em;
+    padding: 20px 0 0 0;
+  }
+
+  .crypto-detail, .register-modal, .signin-modal  {
+    top: 20px;
+  }
+
+  .cryptos-header p, .cryptos-item {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 679px) {
+  .header {
+    height: 150px;
+  }
+
+  .header-img {
+    margin: 10px 0 0 0;
+  }
+
+  .header-branding h2 {
+    font-size: 1.2em;
+    padding: 8px 0 0 0;
+  }
+
+  .search-form {
+    margin: 0 auto;
+  }
+
+  .signin-register-btn {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  p, td {
+    font-size: 0.7em;
+    vertical-align: middle;
+  }
+
+  .crypto-detail, .register-modal, .signin-modal  {
+    top: 0px;
+    height: 100%;
+    width: 100%;
+  }
+}
