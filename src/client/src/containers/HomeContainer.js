@@ -17,7 +17,7 @@ class HomeContainer extends Component {
   // received from a GET request in the listCryptos function below,
   // the data for a specific crypto that is received from a GET request
   // in the searchCrypto function below, along with whether or not
-  // to show a loading circle during a GET request.
+  // to show a loading circle when a transaction is happening.
   ======================================================================*/
   constructor() {
     super();
@@ -29,11 +29,45 @@ class HomeContainer extends Component {
   }
 
   /*====================================================================== 
-  // Upon this MainContainer being mounted the getCryptos
-  // function will be executed.
+  // Upon this MainContainer being mounted the listCryptos function will 
+  // be executed.
   ======================================================================*/
   componentDidMount() {
+    this.checkSession();
     this.listCryptos();
+  }
+
+  /*======================================================================
+  // This will determine whether or not the user has a session upon
+  // first arriving at the website. Set state to logged in if true.
+  ======================================================================*/
+  checkSession = () => {
+    axios.get(`/account/checksession`)
+    
+    .then((res) => {
+      if(res.data === true) {
+        this.props.onSignin();
+      }
+    })
+    .catch(err => {
+      console.log('Error fetching session data from server.', err)
+    })
+  }
+
+  /*======================================================================
+  // This will send a GET request to the database to determine the
+  // user's followed cryptocurrency before executing the searchCrypto
+  // function with the name of the crypto.
+  ======================================================================*/
+  getFollowedCrypto = () => {
+    axios.get(`/account/user`)
+    
+    .then((res) => {
+      this.searchCrypto(res.data);
+    })
+    .catch(err => {
+      console.log('Error fetching user data on server.', err)
+    })
   }
 
   /*======================================================================
@@ -53,7 +87,7 @@ class HomeContainer extends Component {
         loading: false, 
       })
     })
-    .catch(err => {
+    .catch((err) => {
       this.setState({
         loading: false
       })
@@ -66,16 +100,21 @@ class HomeContainer extends Component {
   // entered by the user. Upon a search being submitted any open modals
   // will be closed before a GET request is sent. If successful,
   // a CryptoDetailsModal will show, displaying data for a specific
-  // cryptocurrency.
+  // cryptocurrency. To start, we will replace any spaces in the query
+  // with hypens to ensure the GET request succeeds.
   ======================================================================*/
   searchCrypto = (query) => {
     this.props.onHideSignin();
     this.props.onHideRegister();
+
+    var queryString = query;
+    queryString = queryString.replace(/\s+/g, '-').toLowerCase();
+
     this.setState({
       loading: true,
       searchCrypto: ''
     });
-    axios.get(`https://api.coinmarketcap.com/v1/ticker/${query}/`)
+    axios.get(`https://api.coinmarketcap.com/v1/ticker/${queryString}/`)
     //axios.get(`/api/searchcrypto`)
       
     .then((res) => {
@@ -85,7 +124,7 @@ class HomeContainer extends Component {
       })
       this.props.onDisplayDetails();
     })
-    .catch(err => {
+    .catch((err) => {
       this.setState({
         loading: false,
       })
@@ -130,11 +169,13 @@ class HomeContainer extends Component {
   render() {
     return (
       <div className="homepage">
-        <Header signinModalShow={this.state.displaySigninModal} />
-        <Search onSearch={this.searchCrypto} />
-        {(!this.props.signedInStatus)
-            ? <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleShowModal}>Sign in</Button>
-            : <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleSignout}>Sign out</Button> }
+        <div className="header">
+        {(this.props.signedInStatus)
+            ? <Button bsStyle="primary" className="signin-register-btn" onClick={this.getFollowedCrypto}>Followed Crypto</Button>
+            : <Button bsStyle="primary" className="signin-register-btn" onClick={this.handleShowModal}>Sign in</Button> }
+          <Header signinModalShow={this.state.displaySigninModal} />
+          <Search onSearch={this.searchCrypto} />
+        </div>
         {(this.state.loading)
             ? <div className="loader"></div>
             : <Cryptos cryptosArray={this.state.cryptoList} /> }
@@ -173,6 +214,7 @@ const mapDispatchToProps = dispatch => {
     onDisplaySignin: () => dispatch({type: 'DISPLAY_SIGNIN_MODAL'}),
     onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
+    onSignin: () => dispatch({type: 'SIGNIN'}),
     onSignout: () => dispatch({type: 'SIGNOUT'}),
     onHideMessage: () => dispatch({type: 'HIDE_MESSAGE'})
   };

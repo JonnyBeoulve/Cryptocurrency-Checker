@@ -10,11 +10,11 @@ const Crypto = props => {
 
   return (
     <tr className="cryptos-item">
-        <td><span className="text-symbol-styling">{props.rank}</span></td>
-        <td>{props.name} <span className="text-symbol-styling">({props.symbol})</span></td>
-        <td><NumberFormat value={props.marketCap} displayType={'text'} thousandSeparator={true} renderText={value => <div><span className="text-symbol-styling">$</span> {value}</div>} /></td>
-        <td><span className="text-symbol-styling">$</span> {props.priceUSD}</td>
-        <td>{props.change24H}<span className="text-symbol-styling"> %</span></td>
+      <td><span className="text-symbol-styling">{props.rank}</span></td>
+      <td>{props.name} <span className="text-symbol-styling">({props.symbol})</span></td>
+      <td><NumberFormat value={props.marketCap} displayType={'text'} thousandSeparator={true} renderText={value => <div><span className="text-symbol-styling">$</span> {value}</div>} /></td>
+      <td><span className="text-symbol-styling">$</span> {props.priceUSD}</td>
+      <td>{props.change24H}<span className="text-symbol-styling"> %</span></td>
     </tr>
   )
 };

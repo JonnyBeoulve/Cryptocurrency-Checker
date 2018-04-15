@@ -8,6 +8,41 @@ const {User} = require('./../models/user');
 router.use(bodyParser.json());
 
 /*============================================================================
+// When the user first arrives at the website a check will be made to see
+// if the user already has a session (logged in previously with active
+// cookie).
+============================================================================*/
+router.get('/checksession', function(req, res, next) {
+	if (!req.session.userId) {
+		res.send(false);
+	} else { 
+		res.send(true);
+	}
+})
+
+/*============================================================================
+// When the user is signed in and clicks "followed crypto", this will
+// handle obtaining the user's followed crypto before returning it to the
+// front end.
+============================================================================*/
+router.get('/user', function(req, res, next) {
+	if (!req.session.userId) {
+		console.log("User isn't currently signed in!" + req);
+		return;
+	} else { 
+		User.findById(req.session.userId, function(error, user) {
+			if(error) {
+				var err = new Error("Error occurred when getting user's profile.");
+				err.status = 401;
+				return next(err);
+			} else {
+				res.send(user.followedCrypto);
+			}
+		});
+	}
+})
+
+/*============================================================================
 // Upon submitting a registration request, this will post the user's username,
 // password, email address, and a default crypt follow of bitcoin to the 
 // Mongo database.
@@ -64,9 +99,10 @@ router.put('/follow', function(req, res, next) {
 		console.log("User isn't currently signed in!");
 		return;
 	} else { 
-		User.findByIdAndUpdate(req.session.userId, { $set: { followedCrypto: req.body.followedCrypto }}, function(err, user) {
-			if(err) {
-				res.status(400);
+		User.findByIdAndUpdate(req.session.userId, { $set: { followedCrypto: req.body.followedCrypto }}, function(error, user) {
+			if(error) {
+				var err = new Error('Error occurred during update.');
+				err.status = 401;
 				return next(err);
 			} else {
 				res.location('/')

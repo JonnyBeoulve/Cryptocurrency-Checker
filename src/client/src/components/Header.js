@@ -9,7 +9,7 @@ class Header extends Component {
   ========================================================*/
   render () {
     return (
-      <div className="header">
+      <div className="header-branding">
           <img src={CryptocurrencyLogo} className="header-img" alt='' />
           <a href="/"><h2>Cryptocurrency Checker</h2></a>
       </div>

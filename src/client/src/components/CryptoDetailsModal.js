@@ -53,7 +53,6 @@ class CryptoDetailsModal extends Component {
       }
     })
     .then(response => {
-      console.log(response);
       this.props.onFollowSuccess();
     })
     .catch(error => {
