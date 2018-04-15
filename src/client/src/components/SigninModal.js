@@ -5,6 +5,19 @@ import { connect } from 'react-redux';
 
 import SigninImg from '../img/signin_img.png';
 
+import { zoomIn } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
+
+/*======================================================== 
+// Animated styles using Aphrodite and React Animations.
+========================================================*/
+const styles = StyleSheet.create({
+  zoomIn: {
+    animationName: zoomIn,
+    animationDuration: '1s'
+  }
+})
+
 class SigninModal extends Component {
 
   /*======================================================================
@@ -82,7 +95,8 @@ class SigninModal extends Component {
   ======================================================================*/
   render() {
     return (
-      <div className="signin-modal">
+      
+      <div className={["signin-modal", css(styles.zoomIn)].join(' ')}>
         <p className="modal-close" onClick={this.handleCloseSigninModal}>X</p>
         <img src={SigninImg} className="login-img" alt='' />
         <h3>Sign In</h3>

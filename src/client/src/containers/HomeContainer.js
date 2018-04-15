@@ -11,6 +11,19 @@ import RegisterModal from '../components/RegisterModal';
 import Search from '../components/children/Search';
 import SigninModal from '../components/SigninModal';
 
+import { slideInDown } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
+
+/*======================================================== 
+// Animated styles using Aphrodite and React Animations.
+========================================================*/
+const styles = StyleSheet.create({
+  slideInDown: {
+    animationName: slideInDown,
+    animationDuration: '.5s'
+  }
+})
+
 class HomeContainer extends Component {
   /*======================================================================
   // This will hold the state of the top 100 cryptocurrencies that are
@@ -189,7 +202,7 @@ class HomeContainer extends Component {
             ? <RegisterModal msg={this.state.message} />
             : <p></p> }
         {(this.props.messageStatus)
-            ? <div className="message-div"><p>{this.props.currentMessageText}</p><span onClick={() => {this.props.onHideMessage()}}>X</span></div>
+            ? <div className={["message-div", css(styles.slideInDown)].join(' ')}><p>{this.props.currentMessageText}</p><span onClick={() => {this.props.onHideMessage()}}>X</span></div>
             : <p></p> }
         <Footer />
       </div>

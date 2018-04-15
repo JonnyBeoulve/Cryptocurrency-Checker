@@ -3,7 +3,20 @@ import axios from 'axios';
 import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
 
+import { zoomIn } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
+
 var NumberFormat = require('react-number-format');
+
+/*======================================================== 
+// Animated styles using Aphrodite and React Animations.
+========================================================*/
+const styles = StyleSheet.create({
+  zoomIn: {
+    animationName: zoomIn,
+    animationDuration: '1s'
+  }
+})
 
 /*======================================================================
 // This modal display details for a crypto that the user searched
@@ -82,22 +95,22 @@ class CryptoDetailsModal extends Component {
     const selCrypto = this.props.selectedCrypto;
 
     return (
-    <div className="crypto-detail">
-      <p className="modal-close" onClick={this.handleHideDetails}>X</p>
-      <h2>{selCrypto.name} ({selCrypto.symbol})</h2>
-      {(this.props.signedInStatus)
-        ? <Button bsStyle="primary" className="follow-btn" onClick={this.submitFollow}>Follow</Button>
-        : <p></p> }
-      <p>Rank: <span className="text-symbol-styling">#</span>{selCrypto.rank}</p>
-      <p>Price: $ {selCrypto.price_usd}</p>
-      <p><NumberFormat value={selCrypto.market_cap_usd} displayType={'text'} thousandSeparator={true} renderText={value => <div>Market Cap: $ {value} </div>} /></p>
-      <p>Change 1 Hour: {selCrypto.percent_change_1h} <span className="text-symbol-styling">%</span></p>
-      <p>Change 24 Hours: {selCrypto.percent_change_24h} <span className="text-symbol-styling">%</span></p>
-      <p>Change 7 Days: {selCrypto.percent_change_7d} <span className="text-symbol-styling">%</span></p>
-      {(this.state.notice)
-              ? <p>{this.state.noticeMessage}</p>
-              : <p></p> }
-    </div>
+      <div className={["crypto-detail", css(styles.zoomIn)].join(' ')}>
+        <p className="modal-close" onClick={this.handleHideDetails}>X</p>
+        <h2>{selCrypto.name} ({selCrypto.symbol})</h2>
+        {(this.props.signedInStatus)
+          ? <Button bsStyle="primary" className="follow-btn" onClick={this.submitFollow}>Follow</Button>
+          : <p></p> }
+        <p>Rank: <span className="text-symbol-styling">#</span>{selCrypto.rank}</p>
+        <p>Price: $ {selCrypto.price_usd}</p>
+        <p><NumberFormat value={selCrypto.market_cap_usd} displayType={'text'} thousandSeparator={true} renderText={value => <div>Market Cap: $ {value} </div>} /></p>
+        <p>Change 1 Hour: {selCrypto.percent_change_1h} <span className="text-symbol-styling">%</span></p>
+        <p>Change 24 Hours: {selCrypto.percent_change_24h} <span className="text-symbol-styling">%</span></p>
+        <p>Change 7 Days: {selCrypto.percent_change_7d} <span className="text-symbol-styling">%</span></p>
+        {(this.state.notice)
+                ? <p>{this.state.noticeMessage}</p>
+                : <p></p> }
+      </div>
     )
   }
 }
