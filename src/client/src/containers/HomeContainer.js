@@ -123,24 +123,16 @@ class HomeContainer extends Component {
     var queryString = query;
     queryString = queryString.replace(/\s+/g, '-').toLowerCase();
 
-    this.setState({
-      loading: true,
-      searchCrypto: ''
-    });
     axios.get(`https://api.coinmarketcap.com/v1/ticker/${queryString}/`)
     //axios.get(`/api/searchcrypto`)
       
     .then((res) => {
       this.setState({
-        loading: false, 
         searchCrypto: res.data[0]
       })
       this.props.onDisplayDetails();
     })
     .catch((err) => {
-      this.setState({
-        loading: false,
-      })
       this.props.onDisplayDetails();
       console.log('Error fetching and parsing data. This is likely caused by the search element not matching a coin name.', err)
     })
