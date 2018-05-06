@@ -93,6 +93,12 @@ const reducer = (state = initialState, action) => {
                 showMessage: true,
                 messageText: 'Form incomplete.'
         }
+        case 'DISPLAY_MESSAGE_SEARCH_ERROR':
+            return {
+                ...state,
+                showMessage: true,
+                messageText: "Couldn't find that crypto."
+        }
         case 'FOLLOW_SUCCESS':
             return {
                 ...state,

@@ -133,7 +133,7 @@ class HomeContainer extends Component {
       this.props.onDisplayDetails();
     })
     .catch((err) => {
-      this.props.onDisplayDetails();
+      this.props.onSearchError();
       console.log('Error fetching and parsing data. This is likely caused by the search element not matching a coin name.', err)
     })
   }
@@ -219,6 +219,7 @@ const mapDispatchToProps = dispatch => {
     onDisplaySignin: () => dispatch({type: 'DISPLAY_SIGNIN_MODAL'}),
     onHideRegister: () => dispatch({type: 'HIDE_REGISTER_MODAL'}),
     onHideSignin: () => dispatch({type: 'HIDE_SIGNIN_MODAL'}),
+    onSearchError: () => dispatch({type: 'DISPLAY_MESSAGE_SEARCH_ERROR'}),
     onSignin: () => dispatch({type: 'SIGNIN'}),
     onSignout: () => dispatch({type: 'SIGNOUT'}),
     onHideMessage: () => dispatch({type: 'HIDE_MESSAGE'})
